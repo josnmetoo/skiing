@@ -1,0 +1,890 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>季卡购买</title>
+    <script type="text/javascript">
+      window.zhuge = window.zhuge || [];window.zhuge.methods = "_init debug identify track trackLink trackForm page".split(" ");
+      window.zhuge.factory = function(b) {return function() {var a = Array.prototype.slice.call(arguments);a.unshift(b);
+      window.zhuge.push(a);return window.zhuge;}};for (var i = 0; i < window.zhuge.methods.length; i++) {
+      var key = window.zhuge.methods[i];window.zhuge[key] = window.zhuge.factory(key);}window.zhuge.load = function(b, x) {
+      if (!document.getElementById("zhuge-js")) {var a = document.createElement("script");var verDate = new Date();
+      var verStr = verDate.getFullYear().toString()+ verDate.getMonth().toString() + verDate.getDate().toString();
+      a.type = "text/javascript";a.id = "zhuge-js";a.async = !0;a.src = (location.protocol == 'http:' ? "http://sdk.zhugeio.com/zhuge.min.js?v=" : 'https://zgsdk.zhugeio.com/zhuge.min.js?v=') + verStr;
+      a.onerror = function(){window.zhuge.identify = window.zhuge.track = function(ename, props, callback){if(callback && Object.prototype.toString.call(callback) === '[object Function]')callback();};};
+      var c = document.getElementsByTagName("script")[0];c.parentNode.insertBefore(a, c);window.zhuge._init(b, x)}};
+      window.zhuge.load('dd64b441da6a429eb965c46c1b498510',{
+        autoTrack:false, //全埋点开关
+      singlePage :false, //是否是单页应用
+      debug:false,
+       platform: { //自定义触发环境信息(选填)
+              '版本': 'v1.0'
+          },
+          superProperty: { //全局的事件属性(选填)               
+              '应用名称': '诸葛io'
+          },
+
+      });
+  </script>
+    <link rel="stylesheet" href="libs/reset.css">
+   
+    <style media="screen">
+      style media="screen">
+      body{
+        background-color: #fff;
+      }
+      [contenteditable = "true"], input, textarea {
+        -webkit-user-select: auto!important;
+        -khtml-user-select: auto!important;
+        -moz-user-select: auto!important;
+        -ms-user-select: auto!important;
+        -o-user-select: auto!important;
+        user-select: auto!important;
+      }
+      .container{
+        width: 92%;
+        margin:  1.15rem auto 0px;
+      }
+      .backImg{
+        position: fixed;
+        top:0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        z-index: -10;
+      }
+      .backImg img{
+        width: 100%;
+        height: 100%;
+      }
+      .container section{
+        margin-bottom: 1rem;
+        border-radius: 5px;
+        height: 2.5rem;
+        line-height: 2.5rem;
+        background-color:rgba(255,255,255,0.2);
+      }
+      input[type="text"]{
+        border: none;
+        outline: none;
+        background-color: transparent;
+        height: 1.6rem;
+        width: 80%;
+        font-size: 0.7rem;
+        color: #fff;
+        float: left;
+        margin-top: 0.4rem;
+      }
+      input::-webkit-input-placeholder
+      {
+        color: rgba(255,255,255,0.5);
+        font-size: 0.7rem;
+      }
+      .sec-one{
+        height: 2.5rem;
+        line-height: 2.5rem;
+        background-color: #7cd0c8;
+      }
+      .container section>img:first-of-type{
+        width: 0.9rem;
+        height: 0.9rem;
+        margin-left: 0.6rem;
+        margin-top: 0.8rem;
+        margin-right:0.6rem ;
+        float: left;
+      }
+      .sec-two img{
+        width: 0.7rem !important;
+        height: 0.9rem;
+      }
+      .sec-two .phone{
+        margin-top: 0.35rem;
+      }
+      .list,.num{
+        overflow: hidden;
+        border-radius: 5px;
+        background-color: rgba(255,255,255,0.2);
+        margin-bottom: 1rem;
+      }
+      .list p,.num p{
+        height: 2.5rem;
+        line-height: 2.5rem;
+        color: #fff;
+        font-size: 0.7rem;
+        width: 92%;
+        margin:auto;
+      }
+      .borderBottom{
+        border-bottom: 1px solid rgba(255,255,255,0.5);
+        box-sizing: border-box;
+      }
+      .list p .dan{
+        width: 0.5rem;
+        height: 1rem;
+        margin-right: 0.8rem;
+        margin-top: 0.7rem;
+        float: left;
+      }
+      .algin-down{
+        float: right;
+        width: 0.725rem;
+        height: 0.425rem;
+        margin-top: 1.04rem;
+      }
+      .listDiv{
+        width: 92%;
+        margin: 1rem auto 1rem;
+        font-size: 0.7rem;
+        display: none;
+      }
+      .listDiv span{
+        padding:0.2rem 0.9rem;
+        border: 1px solid #fff;
+        color: #fff;
+        height: 1.2rem;
+        line-height: 1.2rem;
+        border-radius: 0.9rem;
+        margin-right: 0.8rem;
+      }
+      .checked{
+        background-color: #fff;
+        color: #7cd0c8 !important;
+      }
+      .xuechang{
+        width: 0.9rem;
+        height: 0.9rem;
+        margin-right: 0.5rem;
+        margin-top: 0.8rem;
+        float: left;
+      }
+      .ka{
+        width: 0.9rem;
+        height: 0.75rem;
+        margin-right: 0.5rem;
+        margin-top: 0.87rem;
+        float: left;
+      }
+      .cardType{
+        display: none;
+        width: 92%;
+        margin:auto;
+      }
+      .cardType ul{
+        display: none;
+        overflow: hidden;
+      }
+      .cardType ul li{
+        font-size: 0.7rem;
+        color: #fff;
+        padding: 0.2rem 0.6rem;
+        border: 1px solid #fff;
+        border-radius: 5px;
+        float: left;
+        margin-right: 0.8rem;
+        margin-bottom: 0.8rem;
+      }
+      .cardshow{
+        display: block !important;
+      }
+      .cardImg{
+        width: 0.9rem;
+        height: 0.85rem;
+        float: left;
+        margin-top: 0.7rem;
+        margin-right: 0.55rem;
+      }
+      .num .cardNum,.num .jian,.num .jia{
+        float: right;
+      }
+      .num .cardNum{
+        display: inline-block;
+        width: 1.5rem;
+        height: 1rem;
+        text-align: center;
+      }
+      .num .jian,.num .jia{
+        width: 1.1rem;
+        height: 1.1rem;
+        margin-top: 0.68rem;
+      }
+      .cardContainer{
+        display: none;
+      }
+      .btn{
+        margin-top: 1.95rem;
+        text-align: center;
+        height: 2.45rem;
+        padding-bottom: 2.45rem;
+      }
+      .sureBtn{
+        display: inline-block;
+        width: 80%;
+        height: 2.45rem;
+        border-radius: 2.45rem;
+        background-color: #fff;
+        font-size: 0.8rem;
+        line-height: 2.45rem;
+        color: #37A7DD;
+        text-align: center;
+      }
+      .fas{
+        float: right;
+        font-size: 0.7rem;
+        color: #fff;
+        margin-right: 1rem;
+      }
+      .no{
+        display: none;
+      }
+      .phone{
+        width: 50%;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        height: 1.6rem;
+        
+        font-size: 0.7rem;
+        color: #fff;
+        float: left;
+        margin-top: 0.4rem;
+      }
+      .yy{
+        border: none;
+        outline: none;
+        background-color: transparent;
+        height: 1.6rem;
+        width: 80%;
+        font-size: 0.7rem;
+        color: #fff;
+        float: left;
+        margin-top: 0.4rem;
+        width: 50%;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      height: 1.6rem;
+      font-size: 0.7rem;
+      color: #fff;
+      float: left;
+      }
+      .npm span{
+        display: inline-block;
+        margin-left: 0.5rem;
+        margin-top: 0.5rem;
+      }
+      .npm {
+        margin:0.2rem 0; 
+      }
+      .npm .oko{
+        margin-bottom: 0.26rem;
+      }
+ /* .hao{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1000
+    }
+   .hao img{
+      width: 100%;
+      height: 100%;
+    }
+    .hao p{
+      position: absolute;
+      bottom:5.5rem;
+      width: 70%;
+      background: #fff;
+      font-size: 0.75rem;
+      height: 2rem;
+    line-height: 2.1rem;
+    color: #37A7DD ;
+        margin-left: -35%;
+    left: 50%;
+    text-align:center;
+    border-radius: 2rem;
+    }*/
+  </style>
+  </head>
+  <body>
+  <!-- <div class="hao">
+      <img src="images/jsdd.jpg" alt="" />
+      <p class="cengo">立即购买</p>
+    </div> -->
+    <script type="text/javascript">
+      function setPxPerRem(){
+        var cssEl=document.createElement('style');
+        document.documentElement.firstElementChild.appendChild(cssEl);
+        var w = document.documentElement.clientWidth || document.body.clientWidth;
+        var dpr=1;
+        w = w<750 ? w :750;
+        var pxPerRem=w*dpr/18.75;
+        cssEl.innerHTML='html{font-size:'+pxPerRem+'px !important}';
+      }
+      setPxPerRem();
+    </script>
+  
+    <div class="container">
+      
+      <section class="sec-one">
+        <img src="images/ren.png" alt=""> <input type="text" name="" value="" class="username" placeholder="请填写您的姓名">
+      </section>
+
+      <section class="sec-two">
+        <img src="images/shouji.png" alt=""> <input type="number" name="" value="" class="phone" placeholder="请填写您的联系电话">
+      
+      </section>
+      <section class="sec-two">
+        <img src="images/yzm.png" alt=""> <input type="number" name="" value="" class="yy" placeholder="请输入验证码">
+          <span class="fas">获取验证码</span>
+      </section>
+      <!-- 选择雪场 -->
+      <div class="snow list">
+        <p class="p1"> <img src="images/changdi.png" alt="" class="xuechang"> <span class="thisCon xu">选择您喜爱的雪场</span> <img src="images/xaij.png" alt="" class="algin-down"></p>
+
+        <div class="snowPath listDiv npm" value="">
+          <span class="snowName" value="a76f551b09b942c9aa7e20702a8faf8c">崇礼 &nbsp; 万龙滑雪场</span>
+          <span class="snowName oko" value="0c28ac49990d408285c2f3ea7b97213f">阿勒泰 &nbsp; 将军山滑雪场</span>
+        </div>
+      </div>
+      <div class="card list">
+        <p class="p1"> <img src="images/ka.png" alt="" class="ka"> <span class="thisCon kaxing">选择您的卡类型</span> <img src="images/xaij.png" alt="" class="algin-down"></p>
+
+        <div class="cardContainer" value="">
+          <div class="cardCon listDiv" value="0">
+            <span class="card checked" value="0">全季卡</span>
+            <span class="card" value="1">平日卡</span>
+          </div>
+          <div class="cardType">
+            <ul class="cardName cardshow">
+              <li value="0" class="by">成人</li>
+              <li value="1" class="by">青少年</li>
+              <li value="2" class="bo">亲子套餐</li>
+            </ul>
+            <ul class="cardName2">
+              <li value="0" class="by">成人</li>
+              <li value="1" class="by">青少年</li>
+              <li value="2" class="bo">亲子套餐</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+
+      
+      <!-- 选择您的卡类型 -->
+      <div class="banType list">
+        <p class="p1 boo"> <img src="images/danba.png" alt="" class="dan"> <span class="thisCon boy banxing">选择您的雪板类型</span> <img src="images/xaij.png" alt="" class="algin-down"></p>
+        <div class="yes">
+          <div class="bantype1 listDiv" value="" >
+            <span class="dan" value="0">单板</span>
+            <span class="shuang" value="1">双板</span>
+            <span class="shuang" value="2">全部</span>
+          </div>
+        </div>
+        <div class="no">
+          <div class="bantype1 listDiv crval" value="" tatle="">
+            <span class="dan" value="0">成人单板</span>
+            <span class="shuang" value="1">成人双板</span>
+          </div>
+          <div class="bantype1 listDiv etval" value="" tatle="">
+            <span class="dan" value="0">儿童单板</span>
+            <span class="shuang" value="1">儿童双板</span>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- 选择卡的数量 -->
+      <div class="num">
+        <p class="p1"> <img src="images/duoka.png" alt="" class="cardImg"><span class="thisCon "> 选择卡的数量 </span>
+          <img src="images/jia.png" alt="" class="jia">
+          <span class="cardNum sl"> 1 </span>
+          <img src="images/jian.png" alt="" class="jian">
+        </p>
+      </div>
+
+      <div class="btn">
+        <span class="sureBtn">立即购买</span>
+      </div>
+
+    </div>
+    <div class="backImg">
+      <img src="images/backImhg.jpg" alt="">
+    </div>
+  </body>
+  <script src="libs/jquery.js" charset="utf-8"></script>
+  <script src="libs/fastclick.js" charset="utf-8"></script>
+  <script src="libs/ajax.js" charset="utf-8"></script>
+    <script src="libs/weChat.js" charset="utf-8"></script>
+  <script type="text/javascript">
+// $('.cengo').on('click',function(){
+//   $('.hao').css('display','none')
+// })
+  function jsskd(json) {
+      if(json.code == 0){
+        var data = json.data;
+        wx.config({
+          debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+          appId: data.appid, // 必填，公众号的唯一标识
+          timestamp: data.timestamp, // 必填，生成签名的时间戳
+          nonceStr: data.noncestr, // 必填，生成签名的随机串
+          signature: data.signature,// 必填，签名，见附录1
+          jsApiList: [
+            'onMenuShareTimeline','onMenuShareAppMessage','hideMenuItems'
+          ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+      });
+    }else{
+      alert("配置微信环境失败");
+    }
+    }
+    var url = window.location.href;
+    url = url.split('#')[0];
+    AJAX('GET',"","/api/wechat/jssdk/info",{"url":url},jsskd);
+
+
+  wx.ready(function () {
+  wx.onMenuShareTimeline({
+      title: '「教学季卡」限时限量抢购', // 分享标题
+      link:'http://xhx.flowerski.com/api/user/login/wechatlink?state=1000&url=http://xhx.flowerski.com/active/CarSelling.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+      imgUrl: 'http://xhx.flowerski.com/img/500.png', // 分享图标
+      success: function () { 
+          // 用户确认分享后执行的回调函数
+          zhuge.track('季卡分享朋友圈', {
+                    '分享状态':'成功'
+                  });
+      },
+      cancel: function () { 
+          // 用户取消分享后执行的回调函数
+           zhuge.track('季卡分享朋友圈', {
+                    '分享状态':'失败'
+                  });
+      }
+  });
+
+  });
+  wx.ready(function () {
+  wx.onMenuShareAppMessage({
+      title: '「教学季卡」限时限量抢购', // 分享标题
+      desc: '轻松学会滑雪，名额有限火爆抢购。', // 分享描述
+      link:  'http://xhx.flowerski.com/api/user/login/wechatlink?state=1000&url=http://xhx.flowerski.com/active/CarSelling.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+      imgUrl: 'http://xhx.flowerski.com/img/500.png', // 分享图标
+      type: '', // 分享类型,music、video或link，不填默认为link
+      dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+      success: function () { 
+          // 用户确认分享后执行的回调函数
+          zhuge.track('季卡分享朋友', {
+                    '分享状态':'成功'
+                  });
+      },
+      cancel: function () { 
+          // 用户取消分享后执行的回调函数
+          zhuge.track('季卡分享朋友', {
+                    '分享状态':'成功'
+                  });
+      }
+  });
+  });
+  wx.ready(function () {
+  wx.hideMenuItems({
+      menuList: [ "menuItem:share:qq","menuItem:share:QZone"] // 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
+  });
+  })
+
+
+
+
+
+
+
+
+
+
+
+
+    $(function() {
+      FastClick.attach(document.body);
+    });
+    $('.username').on('touchstart',function () {
+      $(this).focus();
+    });
+    $('.phone').on('touchstart',function () {
+      $(this).focus();
+    });
+    
+    
+     var state = sessionStorage.getItem("sd")
+     //var state= getQueryString('state')
+    var sessionid = sessionStorage.getItem("id")
+    // 获取code 走微信授权登录
+    // function getQueryString(name) {
+    //   var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    //   var r = window.location.search.substr(1).match(reg);
+    //   if (r != null) return unescape(r[2]); return null;
+    // }
+    // if(sessionStorage.getItem('cod2')!=getQueryString('code')){
+    //    var code = getQueryString('code');
+    // var state= getQueryString('state');
+    // console.log(state)
+    //  sessionStorage.setItem('cod2',code);
+    // sessionStorage.setItem('sd',state);
+    // // 走授权登录， 获取sessionid
+
+    // var sessionid = sessionStorage.getItem("id");
+    // console.log(sessionid)
+    // if(code!=="" || code!==null){
+    //   function wechatLogin(json) {
+    //     if(json.code == 0){
+    //       sessionid = json.data.ticket_id;
+    //       var id = sessionStorage.setItem('id',sessionid);
+    //     }
+    //   }
+    //   AJAX('POST','','/api/user/login/wechat',{"code":code,"type":0},wechatLogin);
+    // }else{
+    //   sessionid = sessionStorage.getItem("id");
+    // }
+    // }
+   
+    // function uid(data){
+    //    if(data.code==0){
+    //                        zhuge.track('用户信息', {
+    //                  '用户id':data.data.uid,
+    //                  "用户昵称":data.data.name,
+    //                  "用户头像":data.data.purl
+    //               });
+
+
+    //                     }
+    // }
+    // AJAX('GET',sessionid,'/api/user/base/info','',uid)
+    $('.by').on("click",function(){
+      $('.yes').css("display","block");
+      $('.no').css('display','none');
+      $('.boy').html("选择您的雪板类型")
+    })
+
+    $('.bo').on("click",function(){
+      $('.no').css("display","block");
+      $('.yes').css('display','none');
+      $('.boy').html("选择您的雪板类型")
+    })
+
+    // 点击展开下拉列表
+    var falg1 = true;
+    $('.banType .p1').on('click',function () {
+      if(falg1 == true){
+        $(this).addClass('borderBottom');
+        $(this).parent().find('.listDiv').slideDown(100);
+        falg1 = false;
+        
+      }else{
+        $(this).removeClass('borderBottom');
+        $(this).parent().find('.listDiv').slideUp(100);
+        falg1 = true;
+         
+      }
+    });
+
+    // 单板点击选中
+    $('.banType').on('click','.yes .listDiv span',function () {
+
+  zhuge.track('版型选择', {
+                     '版型名称，除亲子卡外':$(this).html()
+                  });
+      var html = $(this).html();
+      $(this).parents('.list').find('.thisCon').html(html);
+      $(this).parents().find('.yes .listDiv').slideUp(100);
+      $(this).parents().find('.p1').removeClass('borderBottom');
+      var thisValue = $(this).attr('value');
+      console.log(thisValue)
+      $(this).parent().attr('value',thisValue);
+      falg1 = true;
+      
+    });
+
+
+
+    console.log($('.etval').attr('value'))
+    $('.crval span').on('click',function(){
+      var crval=$(this).attr('value');
+      $('.crval span').css("background","none")
+      $('.crval span').css('color',"#fff")
+      $(this).css('background',"#fff")
+      $(this).css('color',"#7accc8")
+      $('.crval').attr('value',crval);
+      var chtml=$(this).html();
+      $('.crval').attr('tatle',chtml);
+      if($('.etval').attr('value')==''){
+        
+      }else{
+        $('.boy').html(chtml+' '+ $('.etval').attr('tatle'))
+          $(this).parents().find('.no .listDiv').slideUp(100);
+           falg1 = true
+         $(".p1").removeClass('borderBottom');
+         zhuge.track('亲子卡版型', {
+                     '版型名称': $('.boy').html()
+                  });
+      }
+      
+      console.log(  $('.crval').attr('value'))
+    })
+
+
+
+    $('.etval span').on('click',function(){
+      var etval=$(this).attr('value');
+      $('.etval').attr('value',etval);
+      $('.etval span').css("background","none")
+      $('.etval span').css('color',"#fff")
+      $(this).css('background',"#fff")
+      $(this).css('color',"#7accc8")
+      var ethtml=$(this).html();
+      $('.etval').attr('tatle',ethtml);
+      if($('.crval').attr('value')==''){
+        
+      }else{
+        $('.boy').html( $('.crval').attr('tatle')+' '+ethtml)
+          $(this).parents().find('.no .listDiv').slideUp(100);
+           falg1 = true;
+          $(".p1").removeClass('borderBottom');
+          zhuge.track('亲子卡版型', {
+                     '版型名称': $('.boy').html()
+                  });
+        
+      }
+      
+    })
+    var sendd=true;
+    var sec =60;
+    if(sendd){
+      $('.fas').on('click',function(){
+        var op=$('.phone').val()
+        if(!reg.test(op)){
+          alert('请输入正确的手机号')
+        }else{
+          AJAX('POST','','/api/common/sms/send',{"phone":op,"type":'0'},function(data){
+            if(data.code==0){
+              function getInfo(data){}
+               AJAX('GET',sessionid,'/api/activity/card/gather',{"phone":op},getInfo);
+              
+             
+              for(var  i=0; i<=60; i++){
+              window.time=setTimeout(function(){
+                 if (sec != 0) {
+                  
+                  sec--;
+                  
+                  
+                  $('.fas').html(sec + "秒后重发验证" )
+                  sendd=false
+                } else {
+                           sec = 60;//如果倒计时结束就让  获取验证码显示出来
+                          // _this.html="重新发送" ;
+                          
+                          $('.fas').html("重发验证" )
+                          sendd=true
+                        }
+                      }, i * 1000)
+             }
+             
+           }
+         });
+        }
+        
+      })
+    }
+    // 选择你喜爱的雪场
+    var flag2= true;
+    $('.snow .p1').on('click',function () {
+      if(flag2 == true){
+        $(this).addClass('borderBottom');
+        $(this).parent().find('.listDiv').slideDown(100);
+        flag2 = false
+      }else {
+        $(this).removeClass('borderBottom');
+        $(this).parent().find('.listDiv').slideUp(100);
+        flag2 = true;
+      }
+
+    });
+    // 点击滑雪场名称
+    $('.snow').on('click','.snowPath .snowName',function () {
+       zhuge.track('雪场选择', {
+                     '学场名称': $(this).html()
+                  });
+      var html = $(this).html();
+      $(this).parents('.list').find('.thisCon').html(html);
+      $(this).parents().find('.listDiv').slideUp(100);
+      var thisVal = $(this).attr('value');
+      console.log(thisVal)
+      $(this).parent().attr('value',thisVal);
+      $(this).parents().find('.p1').removeClass('borderBottom');
+       flag2 = true
+    });
+    // 选择卡类型
+    var flag3 = true;
+    $('.card .p1').on('click',function () {
+      if(flag3 == true){
+        $(this).addClass('borderBottom');
+        $(this).parent().find('.listDiv').show();
+        $(this).parent().find('.cardType').show();
+        $('.cardContainer').slideDown(100);
+        flag3 = false;
+      }else{
+        $(this).removeClass('borderBottom');
+        $('.cardContainer').slideUp(100);
+        flag3 = true;
+      }
+    });
+
+    // 点击选择季卡还是日卡的tab切换
+    $('.cardCon .card').on('click',function () {
+              
+      $('.cardCon .card').removeClass('checked');
+      $(this).addClass('checked');
+      $('.cardType ul').removeClass('cardshow').eq($(this).index()).addClass('cardshow');
+      var thisValue = $(this).attr('value');
+      console.log(thisValue)
+      $(this).parent().attr('value',thisValue);
+    });
+    //点击卡类型下面的成人什么的
+    $('.cardType ul li').on('click',function () {
+      
+      var thisValue = $(this).html();
+      var parentValue = $('.cardCon .checked').html();
+      $('.card .p1 .thisCon').html(parentValue+' '+thisValue);
+      $('.card .p1').removeClass('borderBottom')
+      $('.cardContainer').slideUp(100);
+      var typeValue = $(this).attr('value');
+      console.log(typeValue)
+      $('.cardContainer').attr('value',typeValue);
+      flag3 = true
+       zhuge.track('卡片类别', {
+                     '卡名': $(".kaxing").html()
+                  });
+    });
+
+
+    // 数量的加减
+    $('.jia').on('click',function () {
+
+      var num = parseFloat($('.cardNum').html());
+      num++;
+      $('.cardNum').html(num);
+    });
+    $('.jian').on('click',function () {
+      var num = parseFloat($('.cardNum').html());
+      if(num>1){
+        num--;
+      }else{
+        num =1;
+      }
+      $('.cardNum').html(num);
+    });
+
+
+    function order(json) {
+       if(json.code== 21){
+        alert('验证码有误请重新输入')
+       }else{
+
+       }
+      if(json.code== 0){
+        var id = json.data.oid;
+         $('.phone').val('');
+        $('.username').val('');
+         $('.yy').val('')
+         zhuge.track('提交订单', {
+        "买卡详细数据":{
+          "雪场":$('.xu').html(),
+            "版型":$('.banxing').html(),
+            "卡类别":$('.kaxing').html(),
+            "张数":$('.sl').html(),
+   } 
+  }, function(){
+    window.location.href = "pay.html?id="+id;//执行打点的后续操作,如页面跳转
+  });
+       
+      }else{
+        alert("录入信息失败！");
+      }
+    }
+    var reg = /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
+    // 立即预定按钮
+    $('.sureBtn').bind('click',function () {
+      
+      var obj = {};
+      var nbj={};
+      var userName = $('.username').val();
+      var tele = $('.phone').val();//手机号
+      var yzm=$('.yy').val();//验证码
+      var skiType = $('.bantype1').attr('value');
+      var reserveType = $('.snowPath').attr('value'); // 雪场类型
+      var bankType = $('.cardCon').attr('value'); // 卡类型
+      var category = $('.cardContainer').attr('value');
+      var bankCount= parseFloat($('.cardNum').html());//卡数量
+      if(!reg.test(tele)){
+        alert("请输入正确的手机号");
+        $('.phone').val('');
+        $('.phone').focus();
+      }else if (userName.length>30) {
+        alert("用户名长度过长，请重新输入");
+        $('.username').focus().val('');
+      }else if(userName == ''){
+        alert("请填写姓名");
+        $('.username').focus();
+      }
+      else if(yzm == ''){
+        alert("请输入验证码");
+        
+      }else if (tele == '') {
+        alert("请填写联系方式");
+        $('.phone').focus();
+      }else if(bankType == '' || category == ''){
+        alert("请选择卡的类型");
+      }else{
+        if($('.boy').html()=="选择您的雪板类型"){
+
+          alert("请选择卡的类型")
+          return false;
+        }
+        if( $('.cardContainer').attr('value')==2){
+          obj.skateboardtypeadult=$('.crval').attr('value');
+          obj.skateboardtypechildren=$('.etval').attr('value');
+           nbj.skateboardtype='';
+        }else{
+          obj.skateboardtype = skiType;
+             nbj.skateboardtype = skiType;
+          
+        }
+        obj.name = userName;
+        obj.phone = tele;
+        obj.sitetype = reserveType;
+        obj.cardtype = bankType;
+        obj.cardclassifytype = category;
+        obj.count = bankCount;
+        obj.agency = state;
+        obj.code=yzm;//验证码
+
+        nbj.sitetype = reserveType;
+        nbj.cardtype = bankType;
+        nbj.cardclassifytype = category;
+        nbj.agency = state;
+        console.log(obj)
+         AJAX('GET',sessionid,'/api/activity/card/residue',nbj,function(data){
+          if(data.data.count-obj.count>=0){
+
+             AJAX('POST',sessionid,'/api/activity/card/place',obj,order);
+           }else{
+            alert('此卡购买张数量超过上限，剩余'+data.data.count+'张')
+           }
+         });
+      }
+    });
+  </script>
+  </html>

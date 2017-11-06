@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>确认订单</title>
+    <link rel="stylesheet" href="libs/reset.css">
+    <style media="screen">
+    body{
+      background-color: #ffffff;
+
+    }
+    .container{
+      width: 92%;
+      margin: auto;
+    }
+    .card{
+      width: 15.6rem;
+      height: 9.575rem;
+      margin: 0.925rem auto 0px;
+      position: relative;
+    }
+    .card img{
+      width: 100%;
+      height: 100%;
+    }
+    .card .username{
+      position: absolute;
+      left: 1.3rem;
+      bottom: 1.8rem;
+      color: #fff;
+      font-size: 0.7rem;
+      z-index: 10;
+    }
+    .infoList{
+      margin-top: 2.2rem;
+    }
+    .infoList section{
+      border-bottom: 1px solid #dedede;
+      height: 2.25rem;
+      line-height: 2.25rem;
+    }
+    .info-one{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .info-t{
+      font-size: 0.7rem;
+      color: #000000;
+      font-weight: bold;
+    }
+    .info-money{
+      font-size: 0.7rem;
+    }
+    .money{
+      color: #fc5c62;
+      margin-right: 0.2rem;
+      font-size: 1rem;
+      font-family: "微软雅黑",Hotel Tonight,Ultravisual,Fifa;
+    }
+    .count{
+      color: #bcbcbc;
+    }
+    .list{
+      font-size: 0.6rem;
+      color: #666666;
+    }
+    .btn{
+      margin-top: 2rem;
+      width: 100%;
+      text-align: center;
+      padding-bottom: 1rem;
+    }
+    .btn img{
+      width: 14.1rem;
+      height: 2.25rem;
+    }
+    .box{
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      background-color: #fff;
+      z-index: -10;
+    }
+    .cardNUm{
+      position: absolute;
+      top: 43%;
+      left: 1.3rem;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+    .negotiate{
+      padding-top: 0.6rem;
+      font-size: 0.5rem;
+      color: #bebebe;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+
+    </div>
+    <div class="container">
+      <div class="card">
+      <!-- <p class="cardNUm"></p> -->
+      <img src="images/card.png" alt="" class="img1">
+      <!-- <p class="username"></p> -->
+      </div>
+
+      <div class="infoList">
+        <section class="info-one">
+          <p class="info-t">订单信息</p>
+          <p class="info-money"><span class="money"></span><span class="count"></span></p>
+        </section>
+        <section class="list info-two">
+          <span>项目类型：</span> <span class="cardType"></span>
+        </section>
+        <section class="list info-th"><span>教学场地：</span> <span class="address"></span></section>
+        <section class="list info-four"><span> 有效时间：</span> <span class="startTime">2017/12/01</span> - <span>2018/02/28</span></section>
+        <section class="list info-five"> <span>购买人：</span> <span class="username"></span> <span class="phone"></span></section>
+        <p class="negotiate">一经购买，不可进行退卡操作。</p>
+      </div>
+      <div class="btn">
+        <img src="images/button.png" alt="">
+      </div>
+
+    </div>
+
+  </body>
+  <script src="libs/jquery.js" charset="utf-8"></script>
+  <script src="libs/fastclick.js" charset="utf-8"></script>
+  <script src="libs/ajax.js" charset="utf-8"></script>
+  <script src="libs/weChat.js" charset="utf-8"></script>
+  <script type="text/javascript">
+  $(function() {
+    FastClick.attach(document.body);
+});
+  function setPxPerRem(){
+    var cssEl=document.createElement('style');
+    document.documentElement.firstElementChild.appendChild(cssEl);
+    var w = document.documentElement.clientWidth || document.body.clientWidth;
+    var dpr=1;
+    w = w<750 ? w :750;
+    var pxPerRem=w*dpr/18.75;
+    cssEl.innerHTML='html{font-size:'+pxPerRem+'px !important}';
+  }
+  setPxPerRem();
+
+
+
+  // 配置微信jssdk
+  function jsskd(json) {
+    if(json.code == 0){
+      var data = json.data;
+      wx.config({
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: data.appid, // 必填，公众号的唯一标识
+        timestamp: data.timestamp, // 必填，生成签名的时间戳
+        nonceStr: data.noncestr, // 必填，生成签名的随机串
+        signature: data.signature,// 必填，签名，见附录1
+        jsApiList: [
+          'chooseWXPay','onMenuShareTimeline','onMenuShareAppMessage','hideMenuItems'
+        ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+  }else{
+    alert("配置微信环境失败");
+  }
+  }
+  var url = window.location.href;
+  url = url.split('#')[0];
+  AJAX('GET',"","/api/wechat/jssdk/info",{"url":url},jsskd);
+
+
+ 
+
+
+wx.ready(function () {
+wx.onMenuShareTimeline({
+    title: '「教学季卡」限时限量抢购', // 分享标题
+    link:'http://xhx.flowerski.com/api/user/login/wechatlink?state=1000&url=http://xhx.flowerski.com/active/CarSelling.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+    imgUrl: 'http://xhx.flowerski.com/img/500.png', // 分享图标
+    success: function () { 
+        // 用户确认分享后执行的回调函数
+        zhuge.track('季卡分享朋友圈', {
+                  '分享状态':'成功'
+                });
+    },
+    cancel: function () { 
+        // 用户取消分享后执行的回调函数
+         zhuge.track('季卡分享朋友圈', {
+                  '分享状态':'失败'
+                });
+    }
+});
+
+});
+wx.ready(function () {
+wx.onMenuShareAppMessage({
+    title: '「教学季卡」限时限量抢购', // 分享标题
+    desc: '轻松学会滑雪，名额有限火爆抢购。', // 分享描述
+    link:  'http://xhx.flowerski.com/api/user/login/wechatlink?state=1000&url=http://xhx.flowerski.com/active/CarSelling.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+    imgUrl: 'http://xhx.flowerski.com/img/500.png', // 分享图标
+    type: '', // 分享类型,music、video或link，不填默认为link
+    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+    success: function () { 
+        // 用户确认分享后执行的回调函数
+        zhuge.track('季卡分享朋友', {
+                  '分享状态':'成功'
+                });
+    },
+    cancel: function () { 
+        // 用户取消分享后执行的回调函数
+        zhuge.track('季卡分享朋友', {
+                  '分享状态':'成功'
+                });
+    }
+});
+});
+wx.ready(function () {
+wx.hideMenuItems({
+    menuList: [ "menuItem:share:qq","menuItem:share:QZone"] // 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
+});
+})
+
+  // 获取信息
+  var sessionid = sessionStorage.getItem("id");
+  var oid;
+
+
+  function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]); return null;
+  }
+  var id = getQueryString("id");
+
+  function getInfo(json) {
+    console.log(json);
+    if(json.code == 0){
+      var data = json.data;
+      var name = data.name;
+      var phone = data.phone;
+      var skateboardtype = data.skateboardtype; // 滑板类型
+      var sitetype = data.sitetype;// 雪场
+      var cardtype = data.cardtype; // 卡卷类型
+      var cardclassifytype = data.cardclassifytype; // 卡卷分类
+      var count = data.count; // 数量
+      var price = data.price; // 价钱
+      var orderid = data.orderid;
+      if (cardclassifytype=='儿童') {
+       
+        $('.img1').attr('src','images/ertong.png');
+      }
+      $('.info-money .money').html('￥'+price);
+      $('.info-money .count').html('×'+count +"张");
+      $('.username').html(name);
+      $('.phone').html(phone);
+      if(skateboardtype==''){
+          $('.cardType').html(cardtype+'季卡'+ " "+cardclassifytype+'套餐'+' (成人'+data.skateboardtypeadult+')'+' (儿童'+data.skateboardtypechildren+')');
+          $('.img1').attr('src','images/qinzika.png');
+
+      }else{
+         $('.cardType').html(cardclassifytype+' '+skateboardtype + " "+ cardtype +'季卡' );
+      }
+     
+      $('.address').html(sitetype);
+      $('.cardNUm').html(orderid);
+    }else{
+      alert("获取信息失败");
+    }
+  }
+  AJAX('GET',sessionid,'/api/activity/card/payinfo',{"oid":id},getInfo);
+
+  // 点击支付
+  function pay(json) {
+    if(json.code==2088){
+
+      alert("此卡购买已达到上限，请稍后重试")
+    }
+    if(json.code == 0){
+      var data = json.data;
+      var timeStamp = data.timeStamp;
+       var nonceStr = data.nonceStr;
+       var packages = data.package;
+       var signType = data.signType;
+       var paySign = data.signature;
+      wx.chooseWXPay({
+        timestamp:timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+                          nonceStr: nonceStr, // 支付签名随机串，不长于 32 位
+                          package: packages, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
+                          signType: signType, // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+                          paySign: paySign, // 支付签名
+          success: function (res) {
+              // 支付成功后的回调函数
+            window.location.href="payInfo.html?id="+id;
+          }
+      });
+    }else{
+
+    }
+  }
+  $('.btn').on('click',function () {
+  AJAX("POST",sessionid,"/api/user/pay/sponsor",{"oid":id,"type":2,"paytype":0,"url":"http://xhx.flowerski.com/api/wechat/pay/payment"},pay);
+  });
+  </script>
+</html>

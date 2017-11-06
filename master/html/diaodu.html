@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>调度管理</title>
+    <link rel="stylesheet" href="../css/lib.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="../libs/reset.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <header>
+      <span class="head">学滑雪后台管理系统</span>
+      <div class="handlelist">
+        <p>
+          用户名： <span>管理员</span>
+        </p>
+        <ul class="hadnle">
+          <li><a href="#">修改密码</a></li>
+          <li><a href="../index.html">退出账户</a></li>
+        </ul>
+      </div>
+    </header>
+    <div class="left">
+      <section class="sec1">
+        <p class=""><a href="#">基础管理</a></p>
+        <ul class="ul1" style="display:none;">
+          <li value="1"><a href="number.html">账号管理</a></li>
+          <li value="2"><a href="lable.html">标签管理</a></li>
+          <li value="2"><a href="snowpath.html">雪区管理</a></li>
+        </ul>
+      </section>
+      <section class="sec2" value="3">
+        <p>
+          <a href="coachhandle.html">教练管理</a>
+        </p>
+      </section>
+      <section class="sec3">
+        <p>产品管理</p>
+        <ul class="ul2"  style="display:block;">
+          <li value="4"><a href="dan.html" class="">单板教练</a></li>
+          <li value="5"><a href="shuang.html">双板教练</a></li>
+          <li value="6"><a href="jixun.html" class="">集训营</a></li>
+        </ul>
+      </section>
+      <section value="7">
+        <p>
+          <a href="diaodu.html" class="checked">调度管理</a>
+        </p>
+      </section>
+     <section class="sec4">
+      <p class=""><a href="#">一对一管理</a></p>
+        <ul class="ul1" style="display:block;">
+
+         <li value="1"><a  href="one.html">一对一调度</a></li>
+          <li value="2"><a href="two.html">一对一添加</a></li>
+         
+        </ul>
+       
+      </section>
+      <section>
+        <p>
+          <a href="news.html">在线客服</a>
+        </p>
+      </section>
+      <section>
+        <p>
+          <a href="feedback.html">意见反馈</a>
+        </p>
+      </section>
+    </div>
+    <main>
+      <div class="table">
+        <table cellpadding="0" cellspacing="0">
+          <thead>
+            <tr>
+              <td>显示排序</td>
+              <td>产品名称</td>
+              <td>单/双板</td>
+              <td>服务雪区</td>
+              <td>产品价格</td>
+              <td>产品状态</td>
+              <td>操作</td>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr>
+            <td>001</td>
+            <td>单板集训营</td>
+            <td>单板</td>
+            <td>崇礼</td>
+            <td>12323</td>
+            <td>上架</td>
+            <td><button type="button" name="button" class="giveCoach">分配教练</button></td>
+            </tr> -->
+          </tbody>
+        </table>
+
+        <ul id="id">
+
+        </ul>
+    </main>
+  </body>
+  <script src="../libs/jquery.js" charset="utf-8"></script>
+  <script src="../libs/libs.js" charset="utf-8"></script>
+  <script src="../libs/jqPaginator.js" charset="utf-8"></script>
+  <script src="../libs/host.js" charset="utf-8"></script>
+  <script src="../libs/ajax.js" charset="utf-8"></script>
+  <script src="../js/diaodu.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    $(".handlelist").hover(function () {
+        $('.hadnle').show();
+    },function () {
+      $('.hadnle').hide();
+    });
+    // // 左边变色
+    // $('.left>section p').on('click',function () {
+    //     $('.left>section p').removeClass('checked');
+    //     $('.left ul li').removeClass("checked");
+    //     $(this).addClass('checked');
+    // });
+    var flag = true
+    $('.sec1 p').on('click',function () {
+      if(flag == true){
+        $(this).parent().find('ul').slideDown(200);
+        flag = false;
+      }else if (flag == false) {
+        $(this).parent().find('ul').slideUp(200);
+        flag = true;
+      }
+    });
+    var flag2 = true;
+    $('.sec3 p').on('click',function () {
+      if(flag2 == true){
+        $(this).parent().find('ul').slideDown(200);
+        flag2 = false;
+      }else if (flag2 == false) {
+        $(this).parent().find('ul').slideUp(200);
+        flag2 = true;
+      }
+    });
+
+    $(function () {
+      var allWidth = document.body.offsetWidth;
+      var mainWidth = allWidth - 200;
+      $('main').width(mainWidth);
+    });
+
+$('.sec4 p').on('click',function () {
+      if(flag == true){
+        $(this).parent().find('ul').slideDown(200);
+        flag = false;
+      }else if (flag == false) {
+        $(this).parent().find('ul').slideUp(200);
+        flag = true;
+      }
+    });
+
+  </script>
+</html>

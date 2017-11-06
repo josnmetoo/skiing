@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>查询订单</title>
+    <style media="screen">
+/*清除外边距*/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, figure, /*结构元素*/
+dl, dt, dd, ul, ol, li, /*列表元素*/
+fieldset, lengend, button, input, textarea, /*表单元素*/
+th, td, /*表格元素*/
+pre /*文本格式元素*/ {
+    margin: 0;
+}
+
+
+/*清除内边距*/
+ul, ol, menu {
+    padding: 0;
+}
+
+
+/*重置列表元素*/
+ul, ol {
+    list-style: none;
+}
+
+
+/*将字体扶正*/
+address, cite, dfn, em, var {
+    font-style: normal;
+}
+
+
+/*清下划线*/
+a {
+    text-decoration: none;
+    color: black;
+}
+/*鼠标略过a标签，显示下划线*/
+a:hover {
+    /*text-decoration: underline;*/
+}
+
+
+/*清浮动*/
+.clear:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+      .container{
+
+      }
+      .searchInfo{
+        margin-top: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .searchInfo input{
+        width: 200px;
+        height: 30px;
+      }
+      .searchInfo button{
+        width: 50px;
+        height: 30px;
+      }
+      .table{
+        text-align: center;
+      }
+      .table{
+        margin-top: 20px;
+        padding-bottom: 20px;
+      }
+      table{
+      width: 92%;
+      margin:auto;
+      border: 1px solid #dedede;
+      }
+      table thead td{
+        width: 10%;
+        height: 30px;
+        line-height: 30px;
+        font-size: 13px;
+        text-align: center;
+        border-right: 1px solid #fff;
+      }
+      table tbody td{
+        width: 10%;
+        height: 30px;
+        line-height: 30px;
+        font-size: 13px;
+        text-align: center;
+        border-right: 1px solid #dedede;
+        border-top: 1px solid #dedede;
+      }
+      table thead tr{
+        background-color: #dddddd;
+      }
+      table tbody tr:nth-of-type(even){
+        background-color: rgb(251, 253, 246);
+      }
+      table tr td:last-of-type{
+        border-right: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section class="searchInfo">
+        <input type="text" name="" value="" class="input1" placeholder="代号">
+        <input type="text" name="" value="" class="input2" placeholder="秘钥">
+        <button type="button" name="button" class="btn">搜索</button>
+      </section>
+      <div class="table">
+        <table>
+          <thead>
+            <tr>
+              <td>订单编号</td>
+              <td>姓名</td>
+              <td>手机号码</td>
+              <td>滑板类型</td>
+              <td>雪场类型</td>
+              <td>卡劵类型</td>
+              <td>卡劵分类类型</td>
+              <td>单价(元)</td>
+              <td>卡数(张)</td>
+              <td>总价(元)</td>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr> -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <p class="msg" style="font-size:14px;color:#ccc;text-align:center;"></p>
+  </body>
+  <script src="libs/jquery.js" charset="utf-8"></script>
+  <script type="text/javascript">
+  // activity/card/list
+  $('.btn').on('click',function () {
+    var id = $('.input1').val();
+    var key = $('.input2').val();
+    $.ajax({
+      type:"GET",
+      url:"/api/activity/card/list",
+      data:{"id":id,"key":key},
+      success:function (json) {
+        console.log(json);
+        $('.table tbody').empty();
+        if(json.code == 0){
+          var data = json.data;
+          if(data.length == 0){
+            $('.msg').html("暂无数据");
+          }else {
+            $('.msg').empty();
+            $.each(data,function (index,value) {
+              $('.table tbody').append('<tr>'+
+                '<td>'+value.orderid+'</td>'+
+                '<td>'+value.name+'</td>'+
+                '<td>'+value.phone+'</td>'+
+                '<td>'+value.skateboardtype+'</td>'+
+                '<td>'+value.sitetype+'</td>'+
+                '<td>'+value.cardtype+'</td>'+
+                '<td>'+value.cardclassifytype+'</td>'+
+                '<td>'+value.price+'</td>'+
+                '<td>'+value.count+'</td>'+
+                '<td>'+value.totalprice+'</td>'+
+              '</tr>');
+            })
+          }
+        }else{
+          alert("未找到该代理商");
+        }
+      },error:function () {
+          alert("网络错误");
+      }
+    });
+  });
+
+  </script>
+</html>

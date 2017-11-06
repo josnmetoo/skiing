@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>排期管理</title>
+    <link rel="stylesheet" href="../css/lib.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="../libs/reset.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="../libs/jquery-ui.css">
+    <style media="screen">
+    .head2{
+      border-bottom: 1px solid #ccc;
+      height: 60px;
+      line-height: 60px;
+    }
+      .head2 span{
+        font-size: 13px;
+        font-weight: normal;
+      }
+      .table{
+        width: 1000px;
+
+      }
+      .table tr td {
+        border: 1px solid #ccc;
+        width: 140px;
+        text-align: center;
+      }
+      .tableCon{
+        margin-top: 20px;
+      }
+      .shadow{
+        position: fixed;
+        top: 0px;right: 0px;left: 0px;bottom: 0px;
+        z-index: 1000;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+      }
+      .shadow>div{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        z-index: 1100;
+      }
+      .box1,.box2{
+        width: 600px;
+        height: 300px;
+        background-color: #fff;
+        display: none;
+      }
+
+      .box3{
+        display: none;
+        width: 400px;
+        height: 150px;
+        background-color: #fff;
+      }
+      .boxtitle{
+        height: 40px;
+        line-height: 40px;
+        font-size: 15px;
+        background-color: rgb(30,33,39);
+        color: #fff;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .close{
+        float: right;
+        margin-right: 15px;
+        font-size: 20px;
+        color: #fff;
+      }
+      .box1-1>section{
+        margin-bottom: 20px;
+        margin-left: 30px;
+      }
+      .box3Btn button{
+        width: 80px;
+        height: 30px;
+      }
+      .ui-datepicker-title{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .ui-datepicker-title select{
+        line-height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span class="head">学滑雪后台管理系统</span>
+      <div class="handlelist">
+        <p>
+          用户名： <span class="userName">管理员</span>
+        </p>
+        <ul class="hadnle">
+          <li><a href="#">修改密码</a></li>
+          <li><a href="../index.html">退出账户</a></li>
+        </ul>
+      </div>
+    </header>
+    <div class="left">
+      <section class="sec1">
+        <p class=""><a href="#">基础管理</a></p>
+        <ul class="ul1" style="display:none;">
+          <li value="1"><a href="number.html">账号管理</a></li>
+          <li value="2"><a href="lable.html">标签管理</a></li>
+          <li value="2"><a href="snowpath.html">雪区管理</a></li>
+        </ul>
+      </section>
+      <section class="sec2" value="3">
+        <p>
+          <a href="coachhandle.html">教练管理</a>
+        </p>
+      </section>
+      <section class="sec3">
+        <p>产品管理</p>
+        <ul class="ul2"  style="display:block;">
+          <li value="4"><a href="dan.html" class="">单板教练</a></li>
+          <li value="5"><a href="shuang.html">双板教练</a></li>
+          <li value="6"><a href="jixun.html" class="">集训营</a></li>
+        </ul>
+      </section>
+      <section value="7">
+        <p>
+          <a href="diaodu.html" class="checked">调度管理</a>
+        </p>
+      </section>
+      <section>
+        <p>
+          <a href="news.html">在线客服</a>
+        </p>
+      </section>
+      <section>
+        <p>
+          <a href="feedback.html">意见反馈</a>
+        </p>
+      </section>
+    </div>
+    <main>
+      <!-- <div class="head2">
+        <span>产品名称：</span> <span class="name" style="margin-right:10px;"></span>
+        <span>单双板：</span> <span class="bantype"  style="margin-right:10px;"></span>
+        <span>服务地区：</span> <span class="severAddress" style="margin-right:10px;"></span>
+
+        <div class="btn" style="display:inline-block;">
+          <button type="button" name="button" class="add">新增</button>
+          <button type="button" name="button" class="return">返回</button>
+        </div>
+      </div> -->
+      <div class="tableCon">
+        <div class="table">
+          <table cellpadding="0" cellspacing="0">
+            <thead>
+              <tr>
+                <td>日期</td>
+                <td>天数</td>
+                <td>人数</td>
+                <td>学场</td>
+                <td>状态</td>
+                <td>分配教练</td>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <tr>
+                <td>2017.10.1 - 2018.10.1</td>
+                <td>365</td>
+                <td>5</td>
+                <td>崇礼滑雪场</td>
+                <td>开启</td>
+                <td><button type="button" name="button" class="editCon">内容修改</button></td>
+                <td><button type="button" name="button" class="editStatu">状态修改</button></td>
+              </tr>
+              <tr>
+                <td>2017.10.1 - 2018.10.1</td>
+                <td>30</td>
+                <td>5</td>
+                <td>崇礼滑雪场</td>
+                <td>关闭</td>
+                <td><button type="button" name="button" class="editCon">内容修改</button></td>
+                <td><button type="button" name="button" class="editStatu">状态修改</button></td>
+              </tr> -->
+            </tbody>
+          </table>
+          <div class="msg">
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+
+
+  </body>
+  <script src="../libs/jquery.js" charset="utf-8"></script>
+  <script src="../libs/jquery-ui.js" charset="utf-8"></script>
+  <script src="../libs/libs.js" charset="utf-8"></script>
+  <script src="../libs/host.js" charset="utf-8"></script>
+  <script src="../libs/ajax.js" charset="utf-8"></script>
+  <script src="../js/diaodupaiqi.js" charset="utf-8"></script>
+  <script type="text/javascript">
+
+
+  // 返回按钮
+  $('.return').click(function () {
+      window.location.href="jixun.html";
+  });
+
+
+  </script>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>账号管理</title>
+    <link rel="stylesheet" href="../css/lib.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="../libs/reset.css" media="screen" title="no title" charset="utf-8">
+    <style media="screen">
+    input[type="text"],select,input[type="password"]{
+      width: 300px;
+      height: 30px;
+      border: 1px solid #ccc;
+      margin: 10px 0;
+    }
+    table thead td{
+  width: 8%;
+  height: 30px;
+  line-height: 30px;
+  font-size: 13px;
+  text-align: center;
+  border-right: 1px solid #fff;
+}
+table tbody td{
+  width: 8%;
+  height: 30px;
+  line-height: 30px;
+  font-size: 13px;
+  text-align: center;
+  border-right: 1px solid #dedede;
+  border-top: 1px solid #dedede;
+}
+    </style>
+  </head>
+  <body>
+    <header>
+      <span class="head">学滑雪后台管理系统</span>
+      <div class="handlelist">
+        <p>
+          用户名： <span class="userName">管理员</span>
+        </p>
+        <ul class="hadnle">
+          <li><a href="#">修改密码</a></li>
+          <li><a href="../index.html">退出账户</a></li>
+        </ul>
+      </div>
+    </header>
+    <div class="left">
+      <section class="sec1">
+        <p class=""><a href="#">基础管理</a></p>
+        <ul class="ul1" style="display:block;">
+          <li value="1"><a href="number.html" >账号管理</a></li>
+          <li value="2"><a href="lable.html">标签管理</a></li>
+          <li value="2"><a href="snowpath.html">雪区管理</a></li>
+        </ul>
+      </section>
+      <section class="sec2" value="3">
+        <p>
+          <a href="coachhandle.html">教练管理</a>
+        </p>
+      </section>
+      <section class="sec3">
+        <p>产品管理</p>
+        <ul class="ul2"  style="display:none;">
+          <li value="4"><a href="dan.html">单板教练</a></li>
+          <li value="5"><a href="shuang.html">双板教练</a></li>
+          <li value="6"><a href="jixun.html">集训营</a></li>
+        </ul>
+      </section>
+      <section value="7">
+        <p>
+          <a  href="diaodu.html">调度管理</a>
+        </p>
+      </section>
+      <section class="sec4">
+      <p class=""><a href="#">一对一管理</a></p>
+        <ul class="ul1" style="display:block;">
+
+          <li value="1"><a class="checked" href="one.html">一对一调度</a></li>
+          <li value="2"><a href="two.html">一对一添加</a></li>
+         
+        </ul>
+       
+      </section>
+      <section>
+        <p>
+          <a href="news.html">在线客服</a>
+        </p>
+      </section>
+      <section>
+        <p>
+          <a href="feedback.html">意见反馈</a>
+        </p>
+      </section>
+    </div>
+    <main>
+       <input type='date' class="nee" />
+
+        </select>
+      <button type="button" name="button" class="time">查询</button>
+    
+</p>
+
+        <div class="table">
+          <table cellspacing="0" cellpadding="0">
+            <thead>
+              <tr>
+              <td>预约人姓名</td>
+              
+              <td>一对一服务名称</td>
+                <td>板型</td>
+              <td>用户状态</td>
+              <td>教练姓名</td>
+              <td>创建时间</td>
+                <td>成员手机号</td>
+                 <td>支付价格</td>
+             <td>地区名称</td>
+            <td>预约日期</td>
+           
+             <td>分配</td>
+              
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <tr>
+                <td>001</td>
+                <td>李爽</td>
+                <td>男</td>
+                <td>北京雪区</td>
+                <td>单板</td>
+                <td>高级教练</td>
+                <td>￥1290</td>
+                <td><button type="button" name="button" class="guanli">管理</button></td>
+              </tr> -->
+
+            </tbody>
+
+          </table>
+          <ul id="id">
+
+          </ul>
+          <div class="msg">
+
+          </div>
+
+        </div>
+        
+    </main>
+
+
+
+
+  </body>
+  <script src="../libs/jquery.js" charset="utf-8"></script>
+  <script src="../libs/libs.js" charset="utf-8"></script>
+  <script src="../libs/host.js" charset="utf-8"></script>
+  <script src="../libs/ajax.js" charset="utf-8"></script>
+  <script src="../js/one.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    var flag = true
+    $('.sec4 p').on('click',function () {
+      if(flag == true){
+        $(this).parent().find('ul').slideDown(200);
+        flag = false;
+      }else if (flag == false) {
+        $(this).parent().find('ul').slideUp(200);
+        flag = true;
+      }
+    });
+  $(".handlelist").hover(function () {
+        $('.hadnle').show();
+    },function () {
+      $('.hadnle').hide();
+    });
+    // // 左边变色
+    // $('.left>section p').on('click',function () {
+    //     $('.left>section p').removeClass('checked');
+    //     $('.left ul li').removeClass("checked");
+    //     $(this).addClass('checked');
+    // });
+    var flag = true
+    $('.sec1 p').on('click',function () {
+      if(flag == true){
+        $(this).parent().find('ul').slideDown(200);
+        flag = false;
+      }else if (flag == false) {
+        $(this).parent().find('ul').slideUp(200);
+        flag = true;
+      }
+    });
+    var flag2 = true;
+    $('.sec3 p').on('click',function () {
+      if(flag2 == true){
+        $(this).parent().find('ul').slideDown(200);
+        flag2 = false;
+      }else if (flag2 == false) {
+        $(this).parent().find('ul').slideUp(200);
+        flag2 = true;
+      }
+    });
+
+    $(function () {
+      var allWidth = document.body.offsetWidth;
+      var mainWidth = allWidth - 200;
+      $('main').width(mainWidth);
+    });
+
+
+  </script>
+</html>

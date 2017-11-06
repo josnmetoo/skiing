@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>我的卡包</title>
+    <link rel="stylesheet" href="libs/reset.css">
+    <style media="screen">
+   ul{
+   	position: fixed;
+   	width: 100%;
+   	height: 100%;
+   	background: #f5f5f5;
+   }
+   li{
+   	background: #fff;
+   	color: #666;
+   	font-size: 0.75rem;
+   	height: 3rem;
+   	width: 100%;
+margin-top: 0.5rem;
+   }
+   li .ka1{
+   	width: 1rem;
+   	height: 1rem;
+   	float: left;
+	margin:1rem;
+   }
+   span{
+float: left;
+   	line-height: 3.1rem;
+   	height: 100%;
+   }
+   .go{
+   	float: right;
+   	width: 0.35rem;
+   	height: 0.6rem;
+   	margin:1.3rem 1rem;
+   }
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function setPxPerRem(){
+        var cssEl=document.createElement('style');
+        document.documentElement.firstElementChild.appendChild(cssEl);
+        var w = document.documentElement.clientWidth || document.body.clientWidth;
+        var dpr=1;
+        w = w<750 ? w :750;
+        var pxPerRem=w*dpr/18.75;
+        cssEl.innerHTML='html{font-size:'+pxPerRem+'px !important}';
+      }
+      setPxPerRem();
+    </script>
+<ul>
+<li class="one">
+	<img class="ka1" src="./img/ka2.png">
+	<span>滑雪教学季卡</span>
+	
+	<img class="go" src="./img/go.png">
+</li>
+<li class="two">
+	<img class="ka1" src="./img/ka1.png">
+	<span>模拟滑雪教学产品</span>
+	
+	<img class="go" src="./img/go.png">
+</li>
+
+
+
+
+    </div>
+   
+  </body>
+  <script src="libs/jquery.js" charset="utf-8"></script>
+  <!-- <script src="libs/fastclick.js" charset="utf-8"></script> -->
+  <script src="libs/ajax.js" charset="utf-8"></script>
+   
+  <script type="text/javascript">
+ 
+  //获取code 走微信授权登录
+ function getQueryString(name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+      var r = window.location.search.substr(1).match(reg);
+      if (r != null) return unescape(r[2]); return null;
+    }
+    if(sessionStorage.getItem('cod2')!=getQueryString('code')){
+       var code = getQueryString('code');
+    var state= getQueryString('state');
+    console.log(state)
+     sessionStorage.setItem('cod2',code);
+    sessionStorage.setItem('sd',state);
+    // 走授权登录， 获取sessionid
+
+    var sessionid = sessionStorage.getItem("id");
+    console.log(sessionid)
+    if(code!=="" || code!==null){
+      function wechatLogin(json) {
+        if(json.code == 0){
+          sessionid = json.data.ticket_id;
+          var id = sessionStorage.setItem('id',sessionid);
+        }
+      }
+      AJAX('POST','','/api/user/login/wechat',{"code":code,"type":0},wechatLogin);
+    }else{
+      sessionid = sessionStorage.getItem("id");
+    }
+    }
+
+ $('.one').on('click',function(){
+  	 window.location.href = "orderlistone.html"
+  })
+   $('.two').on('click',function(){
+  	 window.location.href = "orderlisttwo.html"
+  })
+
+  
+  </script>
+</html>
+

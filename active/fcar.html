@@ -1,0 +1,53 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>季卡展示</title>
+  
+    <link rel="stylesheet" href="libs/reset.css">
+   
+    <style media="screen">
+.da{
+	width: 100%;
+	height: 100%;
+
+	vertical-align: middle;
+}
+
+  </style>
+  </head>
+  <body>
+ 
+    <script type="text/javascript">
+      function setPxPerRem(){
+        var cssEl=document.createElement('style');
+        document.documentElement.firstElementChild.appendChild(cssEl);
+        var w = document.documentElement.clientWidth || document.body.clientWidth;
+        var dpr=1;
+        w = w<750 ? w :750;
+        var pxPerRem=w*dpr/18.75;
+        cssEl.innerHTML='html{font-size:'+pxPerRem+'px !important}';
+      }
+      setPxPerRem();
+    </script>
+  
+  	
+ <img src="./images/ka1.png" class="da">
+
+  </body>
+  <script src="libs/jquery.js" charset="utf-8"></script>
+  <script src="libs/fastclick.js" charset="utf-8"></script>
+  <script src="libs/ajax.js" charset="utf-8"></script>
+    <script src="libs/weChat.js" charset="utf-8"></script>
+  <script type="text/javascript">
+
+  
+  
+   
+  </script>
+  </html>

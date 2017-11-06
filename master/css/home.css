@@ -1,0 +1,102 @@
+body{
+  height: 100%;
+  width: 1200px;
+  min-width: 1200px;
+}
+header{
+  height: 80px;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  position: fixed;
+  top: 0;
+  left: 0px;
+  background-color: #fff;
+  z-index: 11;
+}
+.head{
+  color: #000;
+  font-size: 24px;
+  font-weight: bold;
+    line-height: 80px;
+    margin-left: 50px;
+}
+.handlelist{
+  float: right;
+  width: 150px;
+  overflow: hidden;
+  margin-top: 35px;
+  margin-right: 60px;
+}
+
+
+.hadnle{
+  text-align: center;
+  background-color: #fff;
+  margin-top: 10px;
+  font-size: 14px;
+  display: none;
+  border: 1px solid #bababa;
+}
+.hadnle li{
+  height: 40px;
+  line-height: 40px;
+}
+.hadnle li:first-of-type{
+}
+.hadnle li:hover{
+  color: #fff;
+  background-color: #57b59b;
+}
+.hadnle:hover{
+  display: none;
+}
+.left{
+  position: fixed;
+  left: 0px;
+  top: 80px;
+  display: inline-block;
+  width: 200px;
+  height: 100%;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  z-index: 10;
+}
+.left section{
+  text-align: center;
+  line-height: 40px;
+  border-bottom: 1px solid #ccc;
+}
+.left>section:first-of-type{
+  margin-top: 20px;
+}
+.left>section p:hover{
+  color: #fff;
+  background-color: #57b59b;
+}
+.checked{
+  color: #fff !important;
+  background-color: #57b59b;
+}
+.
+.ul1,.ul2{
+  display: none;
+  background-color: red;
+}
+.ul1 li,.ul2 li{
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+.ul1 li:hover,.ul2 li:hover{
+  color: #fff !important;
+  background-color: #57b59b;
+}
+main{
+  position: relative;
+  top: 85px;
+  left: 205px;
+
+}

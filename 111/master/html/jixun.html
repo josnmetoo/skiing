@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>集训营</title>
+    <link rel="stylesheet" href="../css/lib.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="../libs/reset.css" media="screen" title="no title" charset="utf-8">
+    <style media="screen">
+    .table{
+      width: 100%;
+      margin-top: 20px;
+    }
+    table{
+    width: 100%;
+    border: 1px solid #dedede;
+    }
+    table thead td{
+      width: 10%;
+      height: 30px;
+      line-height: 30px;
+      font-size: 13px;
+      text-align: center;
+      border-right: 1px solid #fff;
+    }
+    table tbody td{
+      width: 10%;
+      height: 30px;
+      line-height: 30px;
+      font-size: 13px;
+      text-align: center;
+      border-right: 1px solid #dedede;
+      border-top: 1px solid #dedede;
+    }
+    table thead tr{
+      background-color: #dddddd;
+    }
+    table tbody tr:nth-of-type(even){
+      background-color: rgb(251, 253, 246);
+    }
+    table tr td:last-of-type{
+      border-right: none;
+    }
+    .shadow{
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1100;
+      display: none;
+    }
+    .box{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #FFF;
+      width: 600px;
+      height: 300px;
+    }
+    .box>section{
+      margin: 20px 0 20px 10px;
+    }
+    .box>section:last-of-type{
+      display: flex;
+      justify-content: space-around;
+    }
+    .addBtn{
+      height: 40px;
+      line-height: 40px;
+    }
+    .addBtn .addClass{
+      float: right;
+      margin-top: 10px;
+    }
+    .closeP{
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      background-color: #dedede;
+    }
+    .close{
+      float: right;
+      margin-right: 15px;
+      font-size: 26px;
+    }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span class="head">学滑雪后台管理系统</span>
+      <div class="handlelist">
+        <p>
+          用户名： <span class="userName">管理员</span>
+        </p>
+        <ul class="hadnle">
+          <li><a href="#">修改密码</a></li>
+          <li><a href="../index.html">退出账户</a></li>
+        </ul>
+      </div>
+    </header>
+    <div class="left">
+      <section class="sec1">
+        <p class=""><a href="#">基础管理</a></p>
+        <ul class="ul1" style="display:none;">
+          <li value="1"><a href="number.html">账号管理</a></li>
+          <li value="2"><a href="lable.html">标签管理</a></li>
+          <li value="2"><a href="snowpath.html">雪区管理</a></li>
+        </ul>
+      </section>
+      <section class="sec2" value="3">
+        <p>
+          <a href="coachhandle.html">教练管理</a>
+        </p>
+      </section>
+      <section class="sec3">
+        <p>产品管理</p>
+        <ul class="ul2"  style="display:block;">
+          <li value="4"><a href="dan.html">单板教练</a></li>
+          <li value="5"><a href="shuang.html">双板教练</a></li>
+          <li value="6"><a href="jixun.html" class="checked">集训营</a></li>
+        </ul>
+      </section>
+      <section value="7">
+        <p>
+          <a href="diaodu.html">调度管理</a>
+        </p>
+      </section>
+      <section>
+        <p>
+          <a href="news.html">在线客服</a>
+        </p>
+      </section>
+      <section>
+        <p>
+          <a href="feedback.html">意见反馈</a>
+        </p>
+      </section>
+    </div>
+    <main>
+      <p class="addBtn"><button type="button" name="button" class="addClass">创建课程</button></p>
+      <div class="table">
+        <table cellpadding="0" cellspacing="0">
+          <thead>
+            <tr>
+              <td>显示排序</td>
+              <td>产品名称</td>
+              <td>单/双板</td>
+              <td>服务雪区</td>
+              <td>产品价格</td>
+              <td>产品状态</td>
+              <td></td>
+              <td>操作</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr>
+            <td>001</td>
+            <td>单板集训营</td>
+            <td>单板</td>
+            <td>崇礼</td>
+            <td>12323</td>
+            <td>上架</td>
+            <td><button type="button" name="button" class="statusHandle">状态管理</button></td>
+            <td><button type="button" name="button" class="conHandle">内容修改</button></td>
+            <td><button type="button" name="button" class="weekHandle">排期管理</button></td>
+            </tr> -->
+          </tbody>
+        </table>
+
+        <ul id="id">
+
+        </ul>
+        <div class="msg">
+
+        </div>
+
+      </div>
+    </main>
+    <div class="shadow">
+      <div class="box">
+        <input type="text" name="" value="" class="groupid" hidden="hidden">
+        <p class="closeP"> <a href="javascript:;" class="close">×</a></p>
+        <section class="sec1">
+          排序方式： <button type="button" name="button" class="moren">默认</button>
+          <input type="text" name="" value="" placeholder="输入排序号">
+          <button type="button" name="button" class="paixu">确定排序</button>
+        </section>
+        <section class="status">
+          <span>产品状态： </span> <input type="radio" name="radio" value="0" class="up"> 上架
+          <input type="radio" name="radio" value="1" class="down"> 下架
+        </section>
+        <section>
+          <button type="button" name="button" class="guan">返回</button>
+          <button type="button" name="button" class="surechange">确认修改</button>
+        </section>
+      </div>
+    </div>
+  </body>
+  <script src="../libs/jquery.js" charset="utf-8"></script>
+  <script src="../libs/libs.js" charset="utf-8"></script>
+  <script src="../libs/jqPaginator.js" charset="utf-8"></script>
+  <script src="../libs/host.js" charset="utf-8"></script>
+  <script src="../libs/ajax.js" charset="utf-8"></script>
+  <script src="../js/jixun.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    $(".handlelist").hover(function () {
+        $('.hadnle').show();
+    },function () {
+      $('.hadnle').hide();
+    });
+    // // 左边变色
+    // $('.left>section p').on('click',function () {
+    //     $('.left>section p').removeClass('checked');
+    //     $('.left ul li').removeClass("checked");
+    //     $(this).addClass('checked');
+    // });
+    var flag = true
+    $('.sec1 p').on('click',function () {
+      if(flag == true){
+        $(this).parent().find('ul').slideDown(200);
+        flag = false;
+      }else if (flag == false) {
+        $(this).parent().find('ul').slideUp(200);
+        flag = true;
+      }
+    });
+    var flag2 = true;
+    $('.sec3 p').on('click',function () {
+      if(flag2 == true){
+        $(this).parent().find('ul').slideDown(200);
+        flag2 = false;
+      }else if (flag2 == false) {
+        $(this).parent().find('ul').slideUp(200);
+        flag2 = true;
+      }
+    });
+
+    $(function () {
+      var allWidth = document.body.offsetWidth;
+      var mainWidth = allWidth - 200;
+      $('main').width(mainWidth);
+    });
+
+    // 添加课程
+    $('.addClass').click(function () {
+        window.location.href="addclass.html";
+    });
+
+  // 状态管理
+  $('.table table tbody').on('click',"tr td .statusHandle",function () {
+    $('.shadow').show();
+    $('body').css("overflow","hidden");
+  });
+
+
+
+  // 返回
+  $('.shadow .guan ,.close').click(function () {
+    $('.shadow').hide();
+    $('body').css("overflow","auto");
+  });
+
+  </script>
+</html>

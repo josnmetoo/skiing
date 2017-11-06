@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>添加教练</title>
+    <link rel="stylesheet" href="../css/lib.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="../libs/reset.css" media="screen" title="no title" charset="utf-8">
+    <!-- <link rel="stylesheet" href="http://ueditor.baidu.com/ueditor/themes/default/css/ueditor.css"> -->
+    <style media="screen">
+      main>p{
+        margin-top: 15px;
+      }
+      .editor{
+        margin:20px 0;
+        width: 600px;
+      }
+      .editor3{
+        display: none;
+      }
+      .lable{
+        overflow: hidden;
+        padding:10px 5px;
+      }
+      .lable p{
+        float: left;
+        margin-right: 10px;
+      }
+      .lable p input[type="checkbox"]{
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span class="head">学滑雪后台管理系统</span>
+      <div class="handlelist">
+        <p>
+          用户名： <span class="userName">管理员</span>
+        </p>
+        <ul class="hadnle">
+          <li><a href="#">修改密码</a></li>
+          <li><a href="../index.html">退出账户</a></li>
+        </ul>
+      </div>
+    </header>
+    <div class="left">
+      <section class="sec1">
+        <p class=""><a href="#">基础管理</a></p>
+        <ul class="ul1" style="display:none;">
+          <li value="1"><a href="number.html">账号管理</a></li>
+          <li value="2"><a href="lable.html">标签管理</a></li>
+          <li value="2"><a href="snowpath.html">雪区管理</a></li>
+        </ul>
+      </section>
+      <section class="sec2" value="3">
+        <p>
+          <a href="coachhandle.html" >教练管理</a>
+        </p>
+      </section>
+      <section class="sec3">
+        <p>产品管理</p>
+        <ul class="ul2"  style="display:none;">
+          <li value="4"><a href="dan.html" class="">单板教练</a></li>
+          <li value="5"><a href="shuang.html">双板教练</a></li>
+          <li value="6"><a href="jixun.html">集训营</a></li>
+        </ul>
+      </section>
+      <section value="7">
+        <p>
+          <a href="diaodu.html">调度管理</a>
+        </p>
+      </section>
+       <section class="sec4">
+      <p class=""><a href="#">一对一管理</a></p>
+        <ul class="ul1" style="display:block;">
+
+        <li value="1"><a  href="one.html">一对一调度</a></li>
+          <li value="2"><a href="two.html" class="checked">一对一添加</a></li>
+         
+        </ul>
+       
+      </section>
+      <section>
+        <p>
+          <a href="news.html">在线客服</a>
+        </p>
+      </section>
+      <section>
+        <p>
+          <a href="feedback.html">意见反馈</a>
+        </p>
+      </section>
+    </div>
+    <main>
+      <h3>添加教练</h3>
+
+      <p> <span>一对一名称： </span> <input type="text" name="" value="" class="coachName"></p>
+       <p> <span>被约次数（默认0）： </span> <input type="text" name="" value="" class="coach"></p>
+      <p> <span>最大被约次数： </span> <input type="text" name="" value="" class="coac"></p>
+
+      <div class="lable">
+        <!-- <p>请选择教练标签：</p>
+        <p><input type="checkbox" name="" value="">能干</p>
+        <p><input type="checkbox" name="" value="">耐心</p>
+        <p><input type="checkbox" name="" value="">技术好</p> -->
+      </div>
+     
+      <!-- <button type="button" name="button" class="labelBtn">确定</button> -->
+      <p><span>头像：</span> <input type="file" name="file" value="" class="file1"> </p>
+    
+      <p><span>地区：</span>
+        <select class="qu" name="">
+
+        </select>
+      </p>
+      <p>
+        <span>单/双板：</span>
+        <select class="ban" name="">
+          <option value="0">单板</option>
+          <option value="1">双板</option>
+         
+        </select>
+      </p>
+      <p><span>教练级别： </span>
+        <select class="coachType" name="">
+
+        </select>
+      </p>
+      <p><span>培训费用</span>
+        <input type="text" name="" value="" class="payMoney"> 元
+      </p>
+      <p><span>头像背景图：</span> <input type="file" name="file" value="" class="file2"></p>
+
+      <div class="editor">
+      <span>教练短语：</span>
+      <div class="">
+        <script id="container" name="content" type="text/plain"></script>
+
+      </div>
+      </div>
+      <div class="editor editor2">
+        <span class="editorspan">个人介绍：</span>
+        <div class="">
+          <script id="container2" name="content" type="text/plain"></script>
+
+        </div>
+      </div>
+      <div class="editor editor3">
+        <span>双板介绍：</span>
+        <div class="">
+          <script id="container3" name="content" type="text/plain"></script>
+
+        </div>
+      </div>
+
+      <div class="" style="padding:40px 0;">
+        <button type="button" name="button" class="return">返回</button>
+          <button type="button" name="button" class="sure">确定</button>
+      </div>
+    </main>
+  </body>
+  <script src="../libs/jquery.js" charset="utf-8"></script>
+  <!-- 配置文件 -->
+  <script type="text/javascript" src="../ueditor/ueditor.config.js"></script>
+  <!-- 编辑器源码文件 -->
+  <script type="text/javascript" src="../ueditor/ueditor.all.js"></script>
+  <script src="../libs/libs.js" charset="utf-8"></script>
+  <script src="../libs/host.js" charset="utf-8"></script>
+  <script src="../libs/ajax.js" charset="utf-8"></script>
+  <script src="../js/twojia.js" charset="utf-8"></script>
+  <script type="text/javascript">
+
+    $(".handlelist").hover(function () {
+        $('.hadnle').show();
+    },function () {
+      $('.hadnle').hide();
+    });
+    // // 左边变色
+    // $('.left>section p').on('click',function () {
+    //     $('.left>section p').removeClass('checked');
+    //     $('.left ul li').removeClass("checked");
+    //     $(this).addClass('checked');
+    // });
+    var flag = true
+    $('.sec1 p').on('click',function () {
+      if(flag == true){
+        $(this).parent().find('ul').slideDown(200);
+        flag = false;
+      }else if (flag == false) {
+        $(this).parent().find('ul').slideUp(200);
+        flag = true;
+      }
+    });
+    $('.sec4 p').on('click',function () {
+      if(flag == true){
+        $(this).parent().find('ul').slideDown(200);
+        flag = false;
+      }else if (flag == false) {
+        $(this).parent().find('ul').slideUp(200);
+        flag = true;
+      }
+    });
+    var flag2 = true;
+    $('.sec3 p').on('click',function () {
+      if(flag2 == true){
+        $(this).parent().find('ul').slideDown(200);
+        flag2 = false;
+      }else if (flag2 == false) {
+        $(this).parent().find('ul').slideUp(200);
+        flag2 = true;
+      }
+    });
+
+    $(function () {
+      var allWidth = document.body.offsetWidth;
+      var maxWidth = allWidth - 200;
+      $('main').width(maxWidth);
+    });
+    // 返回按钮
+    $('.return').click(function () {
+        window.location.href="coachhandle.html";
+    });
+
+
+  $('.ban').change(function () {
+    var thisValue = $(this).val();
+      if(thisValue == 2){
+        $('.editor3').show();
+        $('.editorspan').html("单板介绍");
+      }else{
+        $('.editor3').hide();
+        $('.editorspan').html("个人介绍");
+      }
+  });
+
+  </script>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>单板教练</title>
+    <link rel="stylesheet" href="../css/lib.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="../libs/reset.css" media="screen" title="no title" charset="utf-8">
+    <style media="screen">
+      .table{
+        width: 100%;
+        margin-top: 20px;
+      }
+      .table{
+        width: 100%;
+        margin-top: 20px;
+      }
+      .table table{
+        width: 100%;
+      }
+      .table table tr{
+        width: 100%;
+      }
+      table{
+      width: 100%;
+      border: 1px solid #dedede;
+      }
+      table thead td{
+        width: 10%;
+        height: 30px;
+        line-height: 30px;
+        font-size: 13px;
+        text-align: center;
+        border-right: 1px solid #fff;
+      }
+      table tbody td{
+        width: 10%;
+        height: 30px;
+        line-height: 30px;
+        font-size: 13px;
+        text-align: center;
+        border-right: 1px solid #dedede;
+        border-top: 1px solid #dedede;
+      }
+      table thead tr{
+        background-color: #dddddd;
+      }
+      table tbody tr:nth-of-type(even){
+        background-color: rgb(251, 253, 246);
+      }
+      table tr td:last-of-type{
+        border-right: none;
+      }
+      .shadow{
+        position: fixed;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        top: 0px;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1100;
+        display: none;
+      }
+      .box{
+        width: 600px;
+        height: 200px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+      }
+      .closeP{
+        height: 40px;
+        line-height: 40px;
+        background-color: #dedede;
+      }
+      .close{
+        float: right;
+        margin-right: 10px;
+        margin-top: 0px;
+        font-size: 26px;
+      }
+      .p1,.p2{
+        text-align: center;
+      }
+      .p1{
+        margin-top: 40px;
+        margin-bottom: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span class="head">学滑雪后台管理系统</span>
+      <div class="handlelist">
+        <p>
+          用户名： <span class="userName">管理员</span>
+        </p>
+        <ul class="hadnle">
+          <li><a href="#">修改密码</a></li>
+          <li><a href="../index.html">退出账户</a></li>
+        </ul>
+      </div>
+    </header>
+    <div class="left">
+      <section class="sec1">
+        <p class=""><a href="#">基础管理</a></p>
+        <ul class="ul1" style="display:none;">
+          <li value="1"><a href="number.html">账号管理</a></li>
+          <li value="2"><a href="lable.html">标签管理</a></li>
+          <li value="2"><a href="snowpath.html">雪区管理</a></li>
+        </ul>
+      </section>
+      <section class="sec2" value="3">
+        <p>
+          <a href="coachhandle.html">教练管理</a>
+        </p>
+      </section>
+      <section class="sec3">
+        <p>产品管理</p>
+        <ul class="ul2"  style="display:block;">
+          <li value="4"><a href="dan.html" class="checked">单板教练</a></li>
+          <li value="5"><a href="shuang.html">双板教练</a></li>
+          <li value="6"><a href="jixun.html">集训营</a></li>
+        </ul>
+      </section>
+      <section value="7">
+        <p>
+          <a href="diaodu.html">调度管理</a>
+        </p>
+      </section>
+      <section class="sec4">
+      <p class=""><a href="#">一对一管理</a></p>
+        <ul class="ul1" style="display:block;">
+
+         <li value="1"><a  href="one.html">一对一调度</a></li>
+          <li value="2"><a href="two.html">一对一添加</a></li>
+         
+        </ul>
+       
+      </section>
+      <section>
+        <p>
+          <a href="news.html">在线客服</a>
+        </p>
+      </section>
+      <section>
+        <p>
+          <a href="feedback.html">意见反馈</a>
+        </p>
+      </section>
+    </div>
+    <main>
+
+        <p>雪区： <select class="qu" name="">
+
+        </select>
+      <button type="button" name="button" class="addCoach">添加教练</button>
+      </p>
+
+        <div class="table">
+          <table cellspacing="0" cellpadding="0">
+            <thead>
+              <tr>
+              <td>姓名</td>
+              <td>性别</td>
+              <td>雪区</td>
+              <td>单/双板</td>
+              <td>级别</td>
+              <td>价格</td>
+              <td>操作</td>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <tr>
+                <td>001</td>
+                <td>李爽</td>
+                <td>男</td>
+                <td>北京雪区</td>
+                <td>单板</td>
+                <td>高级教练</td>
+                <td>￥1290</td>
+                <td><button type="button" name="button" class="guanli">管理</button></td>
+              </tr> -->
+
+            </tbody>
+
+          </table>
+          <ul id="id">
+
+          </ul>
+          <div class="msg">
+
+          </div>
+
+        </div>
+    </main>
+    <div class="shadow">
+      <div class="box">
+        <p class="closeP"><a href="javascript:;" class="close">×</a></p>
+        <input type="text" name="" value="" class="coachId" hidden="hidden">
+        <p class="p1">为此教练填写排序编号： <input type="text" name="" value=""> <button type="button" name="button">确定排序</button></p>
+        <p class="p2"><button type="button" name="button" class="delet">删除教练</button></p>
+      </div>
+
+    </div>
+
+  </body>
+  <script src="../libs/jquery.js" charset="utf-8"></script>
+  <script src="../libs/libs.js" charset="utf-8"></script>
+  <script src="../libs/jqPaginator.js" charset="utf-8"></script>
+  <script src="../libs/host.js" charset="utf-8"></script>
+  <script src="../libs/ajax.js" charset="utf-8"></script>
+  <script src="../js/dan.js" charset="utf-8"></script>
+  <script type="text/javascript">
+
+
+
+    $(".handlelist").hover(function () {
+        $('.hadnle').show();
+    },function () {
+      $('.hadnle').hide();
+    });
+    // // 左边变色
+    // $('.left>section p').on('click',function () {
+    //     $('.left>section p').removeClass('checked');
+    //     $('.left ul li').removeClass("checked");
+    //     $(this).addClass('checked');
+    // });
+    var flag = true
+    $('.sec1 p').on('click',function () {
+      if(flag == true){
+        $(this).parent().find('ul').slideDown(200);
+        flag = false;
+      }else if (flag == false) {
+        $(this).parent().find('ul').slideUp(200);
+        flag = true;
+      }
+    });
+    var flag2 = true;
+    $('.sec3 p').on('click',function () {
+      if(flag2 == true){
+        $(this).parent().find('ul').slideDown(200);
+        flag2 = false;
+      }else if (flag2 == false) {
+        $(this).parent().find('ul').slideUp(200);
+        flag2 = true;
+      }
+    });
+
+    $(function () {
+      var allWidth = document.body.offsetWidth;
+      var mainWidth = allWidth - 200;
+      $('main').width(mainWidth);
+    });
+    // 添加教练按钮
+    $('.addCoach').click(function () {
+        window.location.href = 'adddan.html';
+    });
+
+  // 管理出现弹窗
+  $('.table table tbody').on('click','tr .guanli',function () {
+      $('.shadow').show();
+      $('body').css("overflow","hidden");
+  });
+
+  // 差号关闭弹窗
+  $('.close').click(function () {
+      $('.shadow').hide();
+      $('body').css("overflow","auto");
+  });
+  $('.sec4 p').on('click',function () {
+      if(flag == true){
+        $(this).parent().find('ul').slideDown(200);
+        flag = false;
+      }else if (flag == false) {
+        $(this).parent().find('ul').slideUp(200);
+        flag = true;
+      }
+    });
+  </script>
+</html>

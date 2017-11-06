@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>排期管理</title>
+    <link rel="stylesheet" href="../css/lib.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="../libs/reset.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="../libs/jquery-ui.css">
+    <style media="screen">
+    .head2{
+      border-bottom: 1px solid #ccc;
+      height: 60px;
+      line-height: 60px;
+    }
+      .head2 span{
+        font-size: 13px;
+        font-weight: normal;
+      }
+      .table{
+        width: 1000px;
+
+      }
+      .table tr td {
+        border: 1px solid #ccc;
+        width: 140px;
+        text-align: center;
+      }
+      .tableCon{
+        margin-top: 20px;
+      }
+      .shadow{
+        position: fixed;
+        top: 0px;right: 0px;left: 0px;bottom: 0px;
+        z-index: 1000;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+      }
+      .shadow>div{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        z-index: 1100;
+      }
+      .box1,.box2{
+        width: 600px;
+        height: 300px;
+        background-color: #fff;
+        display: none;
+      }
+
+      .box3{
+        display: none;
+        width: 400px;
+        height: 150px;
+        background-color: #fff;
+      }
+      .boxtitle{
+        height: 40px;
+        line-height: 40px;
+        font-size: 15px;
+        background-color: rgb(30,33,39);
+        color: #fff;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .close{
+        float: right;
+        margin-right: 15px;
+        font-size: 20px;
+        color: #fff;
+      }
+      .box1-1>section{
+        margin-bottom: 20px;
+        margin-left: 30px;
+      }
+      .box3Btn button{
+        width: 80px;
+        height: 30px;
+      }
+      .ui-datepicker-title{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .ui-datepicker-title select{
+        line-height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span class="head">学滑雪后台管理系统</span>
+      <div class="handlelist">
+        <p>
+          用户名： <span class="userName">管理员</span>
+        </p>
+        <ul class="hadnle">
+          <li><a href="#">修改密码</a></li>
+          <li><a href="../index.html">退出账户</a></li>
+        </ul>
+      </div>
+    </header>
+    <div class="left">
+      <section class="sec1">
+        <p class=""><a href="#">基础管理</a></p>
+        <ul class="ul1" style="display:none;">
+          <li value="1"><a href="number.html">账号管理</a></li>
+          <li value="2"><a href="lable.html">标签管理</a></li>
+          <li value="2"><a href="snowpath.html">雪区管理</a></li>
+        </ul>
+      </section>
+      <section class="sec2" value="3">
+        <p>
+          <a href="coachhandle.html">教练管理</a>
+        </p>
+      </section>
+      <section class="sec3">
+        <p>产品管理</p>
+        <ul class="ul2"  style="display:block;">
+          <li value="4"><a href="dan.html" class="">单板教练</a></li>
+          <li value="5"><a href="shuang.html">双板教练</a></li>
+          <li value="6"><a href="jixun.html" class="checked">集训营</a></li>
+        </ul>
+      </section>
+      <section value="7">
+        <p>
+          <a href="diaodu.html">调度管理</a>
+        </p>
+      </section>
+      <section>
+        <p>
+          <a href="news.html">在线客服</a>
+        </p>
+      </section>
+      <section>
+        <p>
+          <a href="feedback.html">意见反馈</a>
+        </p>
+      </section>
+    </div>
+    <main>
+      <div class="head2">
+        <span>产品名称：</span> <span class="name" style="margin-right:10px;"></span>
+        <span>单双板：</span> <span class="bantype"  style="margin-right:10px;"></span>
+        <span>服务地区：</span> <span class="severAddress" style="margin-right:10px;"></span>
+
+        <div class="btn" style="display:inline-block;">
+          <button type="button" name="button" class="add">新增</button>
+          <button type="button" name="button" class="return">返回</button>
+        </div>
+      </div>
+      <div class="tableCon">
+        <div class="table">
+          <table cellpadding="0" cellspacing="0">
+            <thead>
+              <tr>
+                <td>日期</td>
+                <td>天数</td>
+                <td>人数</td>
+                <td>雪场</td>
+                <td>状态</td>
+                <td>修改内容</td>
+                <td>修改状态</td>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <tr>
+                <td>2017.10.1 - 2018.10.1</td>
+                <td>365</td>
+                <td>5</td>
+                <td>崇礼滑雪场</td>
+                <td>开启</td>
+                <td><button type="button" name="button" class="editCon">内容修改</button></td>
+                <td><button type="button" name="button" class="editStatu">状态修改</button></td>
+              </tr>
+              <tr>
+                <td>2017.10.1 - 2018.10.1</td>
+                <td>30</td>
+                <td>5</td>
+                <td>崇礼滑雪场</td>
+                <td>关闭</td>
+                <td><button type="button" name="button" class="editCon">内容修改</button></td>
+                <td><button type="button" name="button" class="editStatu">状态修改</button></td>
+              </tr> -->
+            </tbody>
+          </table>
+          <div class="msg">
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+  <div class="shadow">
+    <div class="box1">
+      <!-- 新增排期 -->
+      <p class="boxtitle">新增排期 <a href="javascript:;" class="close">×</a></p>
+      <div class="box1-1">
+        <section>
+          开始时间： <input type="text" name="" value="" id="datepicker">
+        </section>
+        <section>
+          结束时间： <input type="text" name="" value="" id="endtime">
+        </section>
+        <section>
+          人数： <input type="text" name="" value="" class="people">
+        </section>
+        <section>
+          雪场： <select class="qu" name="">
+
+          </select>
+        </section>
+        <section style="text-align:center;">
+          <button type="button" name="button" class="addBtn">确定</button>
+        </section>
+      </div>
+
+    </div>
+    <div class="box2">
+      <p class="boxtitle">修改内容 <a href="javascript:;" class="close">×</a></p>
+      <!-- 内容修改 -->
+      <input type="text" name="" value="" class="id" hidden="hidden">
+      <div class="box1-1">
+        <section>
+          开始时间： <input type="text" name="" value="" id="datepicker2">
+        </section>
+        <section>
+          结束时间： <input type="text" name="" value="" id="endtime2">
+        </section>
+        <section>
+          人数： <input type="text" name="" value="" class="people2">
+        </section>
+        <section>
+          雪场： <select class="qu qu2" name="">
+
+          </select>
+        </section>
+        <section style="text-align:center;">
+          <button type="button" name="button" class="editBtn">确定</button>
+        </section>
+      </div>
+    </div>
+
+    <div class="box3">
+        <!-- 状态操作 -->
+        <p class="boxtitle">操作状态 <a href="javascript:;" class="close">×</a></p>
+        <div class="box3Btn" style="display:flex;justify-content:space-around;">
+          <input type="text" name="" value="" class="thisStatus" hidden="hidden">
+          <button type="button" name="button" class="guan" value="0">关闭</button>
+          <button type="button" name="button" class="kai" value="1">开启</button>
+        </div>
+    </div>
+
+  </div>
+
+  </body>
+  <script src="../libs/jquery.js" charset="utf-8"></script>
+  <script src="../libs/jquery-ui.js" charset="utf-8"></script>
+  <script src="../libs/libs.js" charset="utf-8"></script>
+  <script src="../libs/host.js" charset="utf-8"></script>
+  <script src="../libs/ajax.js" charset="utf-8"></script>
+  <script src="../js/paiqi.js" charset="utf-8"></script>
+  <script type="text/javascript">
+  // 创建弹窗的日历
+  $( "#datepicker" ).datepicker({
+    dayNamesMin: ['日', '一', '二', '三', '四', '五', '六'],// 设置控件的星期名称显示
+		firstDay: 1, //设置排在第一列的是星期几，星期天为0，星期一为1，以此类推。
+		changeMonth: true,  //改变月份下拉框
+		changeYear: true,    //改变年份下拉框
+		monthNamesShort:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+		dateFormat: 'yy-mm-dd' //设置日期格式
+  });
+  $('#endtime').datepicker({
+    dayNamesMin: ['日', '一', '二', '三', '四', '五', '六'],// 设置控件的星期名称显示
+		firstDay: 1, //设置排在第一列的是星期几，星期天为0，星期一为1，以此类推。
+		changeMonth: true,  //改变月份下拉框
+		changeYear: true,    //改变年份下拉框
+		monthNamesShort:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+		dateFormat: 'yy-mm-dd' //设置日期格式
+  });
+  // 内容修改弹窗的日历
+  $( "#datepicker2" ).datepicker({
+    dayNamesMin: ['日', '一', '二', '三', '四', '五', '六'],// 设置控件的星期名称显示
+		firstDay: 1, //设置排在第一列的是星期几，星期天为0，星期一为1，以此类推。
+		changeMonth: true,  //改变月份下拉框
+		changeYear: true,    //改变年份下拉框
+		monthNamesShort:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+		dateFormat: 'yy-mm-dd' //设置日期格式
+  });
+  $('#endtime2').datepicker({
+    dayNamesMin: ['日', '一', '二', '三', '四', '五', '六'],// 设置控件的星期名称显示
+		firstDay: 1, //设置排在第一列的是星期几，星期天为0，星期一为1，以此类推。
+		changeMonth: true,  //改变月份下拉框
+		changeYear: true,    //改变年份下拉框
+		monthNamesShort:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+		dateFormat: 'yy-mm-dd' //设置日期格式
+  });
+    $(".handlelist").hover(function () {
+        $('.hadnle').show();
+    },function () {
+      $('.hadnle').hide();
+    });
+    // // 左边变色
+    // $('.left>section p').on('click',function () {
+    //     $('.left>section p').removeClass('checked');
+    //     $('.left ul li').removeClass("checked");
+    //     $(this).addClass('checked');
+    // });
+    var flag = true
+    $('.sec1 p').on('click',function () {
+      if(flag == true){
+        $(this).parent().find('ul').slideDown(200);
+        flag = false;
+      }else if (flag == false) {
+        $(this).parent().find('ul').slideUp(200);
+        flag = true;
+      }
+    });
+    var flag2 = true;
+    $('.sec3 p').on('click',function () {
+      if(flag2 == true){
+        $(this).parent().find('ul').slideDown(200);
+        flag2 = false;
+      }else if (flag2 == false) {
+        $(this).parent().find('ul').slideUp(200);
+        flag2 = true;
+      }
+    });
+
+    $(function () {
+      var allWidth = document.body.offsetWidth;
+      var mainWidth = allWidth - 200;
+      $('main').width(mainWidth);
+    });
+
+  function closeAll() {
+    $('.shadow').hide();
+    $('.box1').hide();
+    $('.box2').hide();
+    $('.box3').hide();
+    $('body').css("overflow","auto");
+  }
+
+  // 点击差号弹窗全部关闭
+  $('.close').click(function () {
+  closeAll();
+  });
+  // 点击新增出现新增弹窗
+  function box1() {
+    $('.shadow').show();
+    $('.box1').show();
+    $('.box2').hide();
+    $('.box3').hide();
+    $('body').css("overflow","hidden");
+  }
+  $(".add").click(function () {
+      box1();
+  });
+  // 点击内容修改出现修改弹窗
+  function box2() {
+    $('.shadow').show();
+    $('.box1').hide();
+    $('.box2').show();
+    $('.box3').hide();
+    $('body').css("overflow","hidden");
+  }
+  $('.table table tbody').on('click','tr td .editCon',function () {
+      box2();
+  });
+  // 点击状态修改
+  function box3() {
+    $('.shadow').show();
+    $('.box1').hide();
+    $('.box2').hide();
+    $('.box3').show();
+    $('body').css("overflow","hidden");
+  }
+  $('.table table tbody').on('click','tr td .editStatu',function () {
+    box3();
+  });
+
+  // 返回按钮
+  $('.return').click(function () {
+      window.location.href="jixun.html";
+  });
+
+
+  </script>
+</html>

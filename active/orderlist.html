@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>订单详情</title>
+    <link rel="stylesheet" href="libs/reset.css">
+    <style media="screen">
+    body{
+      background-color: #fff;
+    }
+      .container{
+        width: 92%;
+        margin: 1.7rem auto 0rem;
+        background-color: #fff;
+        position: relative;
+        z-index: -10;
+      }
+      .info{
+        width: 100%;
+        height: 15rem;
+        position: relative;
+        color: #fff;
+        font-size: 0.8rem;
+        z-index: -1;
+      }
+      .info img{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: -1;
+      }
+      .info p{
+        width: 93.4%;
+        margin: 1rem auto 0;
+        color: #fff;
+      }
+      .p1{
+        padding-top: 1rem;
+      }
+      .money{
+        font-size: 1rem;
+        padding-right: 0.3rem;
+        font-family: "微软雅黑",Hotel Tonight,Ultravisual,Fifa;
+      }
+      .time,.cardNum{
+        font-family: "微软雅黑",Hotel Tonight,Ultravisual,Fifa;
+      }
+      .p{
+        overflow: hidden;
+      }
+      .p span{
+        float: right;
+      }
+      .user{
+        margin-right: 0.9rem;
+      }
+      .p6{text-align: right;}
+      .btn{text-align: center;position: fixed;bottom: 1.75rem;left: 0px;right: 0px;height: 2rem;line-height: 2rem;display: flex;justify-content: center;}
+      .btn a{
+        color: #3aadb4;
+        font-size: 1rem;
+      }
+      .line{
+        color: #3aadb4;
+        padding: 0px 0.5rem;
+        font-size: 1rem;
+      }
+      .phone{
+        padding-top: 0.1rem;
+      }
+      .message{
+        width: 92%;
+        margin: 2rem auto 0px;
+        padding-bottom: 2rem;
+        font-size: 0.7rem;
+        color: #484848;
+        text-align: center;
+
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+
+
+
+
+    </div>
+    <p class="message">此卡一经售出，不可进行退卡操作。本商品的最终解释权归本公司所有。</p>
+
+  </body>
+  <script src="libs/jquery.js" charset="utf-8"></script>
+  <!-- <script src="libs/fastclick.js" charset="utf-8"></script> -->
+  <script src="libs/ajax.js" charset="utf-8"></script>
+  <script type="text/javascript">
+  // 获取code 走微信授权登录
+  function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]); return null;
+  }
+  var code = getQueryString('code');
+  // var sessionid = "1a229468c4c449caa31430650850bb40";
+  var sessionid = sessionStorage.getItem('id');
+  if(code == '' || code == null || code == undefined || sessionid == null){
+    function wechatLogin(json) {
+      if(json.code == 0){
+        sessionid = json.data.ticket_id;
+        var id = sessionStorage.setItem('id',sessionid);
+      }
+    }
+    AJAX('POST','','/api/user/login/wechat',{"code":code,"type":0},wechatLogin);
+  }
+
+
+
+  function getInfo(json) {
+    if(json.code == 0){
+      var data = json.data;
+      console.log(data);
+      $('.container').empty();
+      var name = data.name;
+      var phone = data.phone;
+      var skateboardtype = data.skateboardtype; // 滑板类型
+      var sitetype = data.sitetype;// 雪场
+      var cardtype = data.cardtype; // 卡卷类型
+      var cardclassifytype = data.cardclassifytype; // 卡卷分类
+      var count = data.count; // 数量
+      var price = data.price; // 单价
+      var orderid = data.orderid;
+      var count = data.count; // 卡的数量
+      var totalprice = data.totalprice; // 总价
+      var skateboardtypeadult=data.skateboardtypeadult;//
+     var  skateboardtypechildren=data.skateboardtypechildren
+      if(data.length > 0){
+       
+            $.each(data,function (index,value) {
+            if(value.skateboardtype==''){
+              $('.container').append(`<div class="info">
+            <img src="images/info.png" alt="">
+            <p class="p p1">卡片类型： <span class="cardType"> ${value.cardtype}季卡 ${value.cardclassifytype}套餐 （成人${value.skateboardtypeadult}) (儿童${value.skateboardtypechildren})</span></p>
+            <p class="p p2">卡片数量：<span class="cardNum">${value.count} 张</span></p>
+            <p class="p p3">教学场地：<span class="address">${value.sitetype}</span></p>
+            <p class="p p4">使用时间： <span class="time">2017.12.01-2018.02.28</span></p>
+            <p class="p p5">购买人：<span class="phone">${value.phone}</span> <span class="user">${value.name}</span> </p>
+            <p class="p6"><span>已支付：<span class="money">${value.totalprice}</span>元</span></p>
+          </div>`);
+            }else{
+              $('.container').append(`<div class="info">
+            <img src="images/info.png" alt="">
+            <p class="p p1">卡片类型： <span class="cardType">${value.cardclassifytype} ${value.skateboardtype} ${value.cardtype}季卡 </span></p>
+            <p class="p p2">卡片数量：<span class="cardNum">${value.count} 张</span></p>
+            <p class="p p3">教学场地：<span class="address">${value.sitetype}</span></p>
+            <p class="p p4">使用时间： <span class="time">2017.12.01-2018.02.28</span></p>
+            <p class="p p5">购买人：<span class="phone">${value.phone}</span> <span class="user">${value.name}</span> </p>
+            <p class="p6"><span>已支付：<span class="money">${value.totalprice}</span>元</span></p>
+          </div>`);
+            }
+          
+        });
+        
+        
+      }else{
+        $('.container').append(`<p style="color:#ccc;font-size:1.3rem; text-align:center;margin-top:1rem;">暂无数据</p>`);
+        $('.message').hide();
+      }
+    }else{
+      alert("获取信息失败");
+    }
+  }
+  AJAX('GET',sessionid,'/api/activity/card/record',{},getInfo);
+  </script>
+</html>

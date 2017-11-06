@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="css/lib.css">
+        <link rel="stylesheet" href="libs/reset.css" media="screen" title="no title" charset="utf-8">
+        <style media="screen">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            .container{
+              width: 1000px;
+              margin: 200px auto 0;
+              min-width: 1000px;
+              text-align: center;
+            }
+            input[type="text"],  input[type="password"]{
+              width: 200px;
+              height: 30px;
+              margin-bottom: 10px;
+            }
+            .login{
+              width: 80px;
+              height: 30px !important;
+              background-color: #ccc;
+              border: 1px solid #dedede;
+            }
+
+        </style>
+    </head>
+    <body>
+      <div class="container">
+        <p>
+          <input type="text" name="name" value="root2017"placeholder="请输入用户名" class="userName">
+        </p>
+        <p>
+          <input type="password" name="name" value="abc123456" placeholder="请输入密码" class="pwd">
+        </p>
+        <p>
+          <input type="button" name="name" value="登录" class="login">
+        </p>
+      </div>
+
+
+    </body>
+    <script src="libs/jquery.js" charset="utf-8"></script>
+    <script src="libs/ajax.js" charset="utf-8"></script>
+    <script src="libs/host.js" charset="utf-8"></script>
+    <script type="text/javascript">
+    function login(json) {
+      console.log(json);
+      if(json.code == 0){
+        var sessionid = json.data.sessionid;
+        var expire = json.data.expire; // 会话有效时间
+        var storage = localStorage.setItem("id",sessionid);
+        window.location.href="html/number.html";
+      }
+    }
+    $('.login').click(function () {
+      var userName = $('.userName').val();
+      var passWord = $('.pwd').val();
+        AJAX('POST','',REYURNURL(LOGIN),{"account":userName,"password":passWord},login)
+    });
+    </script>
+</html>

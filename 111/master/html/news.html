@@ -1,0 +1,459 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>在线客服</title>
+    <link rel="stylesheet" href="../css/lib.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="../libs/reset.css" media="screen" title="no title" charset="utf-8">
+    <style>
+        .ren{
+            height: 40px; background-color: #CCCCCC; border-bottom: 1px #F1F1F1 solid;text-align: center; line-height: 40px;
+        }
+        #text{
+            /*display: none;*/
+        }
+        .container{
+          width: 100%;
+          height: 690px;;
+          overflow: hidden;
+          border: 1px solid #ccc;
+        }
+        .member{
+            border: 1px solid #CCC;
+            margin: 6px 0;
+            overflow: hidden;
+          height: 40px;
+        }
+        .member span,.member img{
+          float: left;
+          margin-left: 4px;
+          margin-top: 8px;
+        }
+        .record{
+            display: none;
+        }
+        .member_select{
+            background-color: antiquewhite;
+        }
+
+        .record_img{
+            width: 20px;
+            height: 20px;
+        }
+
+        .status{
+            color: brown;
+        }
+        #member{
+          width: 25%;
+          height: 100%;
+          border-right: 1px solid #dedede;
+          float: left;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+        #textCon{
+          width: 70%;
+          float: left;
+          height: 100%;
+          display: none;
+          padding-bottom: 20px;
+        }
+        .textCon{
+          width: 100%;
+        height: 76%;
+        overflow: auto;
+        }
+        #text section{
+          padding-bottom: 10px;
+        }
+        #text section:last-of-type{
+          padding-bottom: 20px;
+        }
+        #text p,#text section{
+          overflow: hidden;
+        }
+        #text p .sendMsg{
+          width: 200px;
+          display: inline-block;
+          background-color: #57b59b;
+          color: #fff;
+          border-radius: 5px;
+          margin-left: 10px;
+          min-height: 28px;
+          padding: 5px 2px 2px 2px;
+          text-indent: 1em;
+        }
+        #text .kefu .sendMsg{
+          text-align: right;
+        }
+        #text .kefu img, #text .kefu span{
+          float: right;
+        }
+        #text .user img, #text .user span{
+          float: left;
+        }
+        #text .kefu{
+          float: right;
+          margin-left: 10px;
+        }
+        #text .user{
+          float: left;
+          margin-right: 10px;
+        }
+        #text p img{
+          margin-top: 4px;
+          margin-right: 6px;
+        }
+        #text p span:first-of-type{
+          margin-top: 4px;
+        }
+        .closenow{
+          height: 30px;
+          line-height: 30px;
+          width: 100%;
+          background-color: #ffb5b5;
+          color: #fff;
+          font-size: 14px;
+          text-align: center;
+        }
+        #send{
+          padding:5px 10px;
+          border: 1px solid #dedede;
+          color: #fff;
+          border-radius: 5px;
+          background-color:#57b59b;
+          width: 100px;
+          text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+  <header>
+    <span class="head">学滑雪后台管理系统</span>
+    <div class="handlelist">
+      <p>
+        用户名： <span class="userName">管理员</span>
+      </p>
+      <ul class="hadnle">
+        <li><a href="#">修改密码</a></li>
+        <li><a href="../index.html">退出账户</a></li>
+      </ul>
+    </div>
+  </header>
+  <div class="left">
+    <section class="sec1">
+      <p class=""><a href="#">基础管理</a></p>
+      <ul class="ul1" style="display:block;">
+        <li value="1"><a href="number.html" class="">账号管理</a></li>
+        <li value="2"><a href="lable.html">标签管理</a></li>
+        <li value="2"><a href="snowpath.html">雪区管理</a></li>
+      </ul>
+    </section>
+    <section class="sec2" value="3">
+      <p>
+        <a href="coachhandle.html">教练管理</a>
+      </p>
+    </section>
+    <section class="sec3">
+      <p>产品管理</p>
+      <ul class="ul2"  style="display:none;">
+        <li value="4"><a href="dan.html">单板教练</a></li>
+        <li value="5"><a href="shuang.html">双板教练</a></li>
+        <li value="6"><a href="jixun.html">集训营</a></li>
+      </ul>
+    </section>
+    <section value="7">
+      <p>
+        <a href="diaodu.html">调度管理</a>
+      </p>
+    </section>
+    <section>
+      <p>
+        <a href="news.html" class="checked">在线客服</a>
+      </p>
+    </section>
+    <section>
+      <p>
+        <a href="feedback.html">意见反馈</a>
+      </p>
+    </section>
+  </div>
+  <main>
+    <div style="" class="container">
+      <div id="member"></div>
+      <div class="" id="textCon">
+        <p class="closenow">关闭当前会话窗口</p>
+        <div class="textCon">
+          <div id="text" style=" background-color: #e1e1e1"></div>
+        </div>
+        <textarea type="text" id="content" style="width: 99.3%; height:95px;border: 1px #ccc solid"></textarea>
+        <input id="send" type="button" value="发送" style="">
+      </div>
+
+
+
+    </div>
+
+    <script src="../libs/jquery.js"></script>
+    <script src="../libs/libs.js" charset="utf-8"></script>
+    <script>
+    $(".handlelist").hover(function () {
+        $('.hadnle').show();
+    },function () {
+      $('.hadnle').hide();
+    });
+    var flag = true
+    $('.sec1 p').on('click',function () {
+      if(flag == true){
+        $(this).parent().find('ul').slideDown(200);
+        flag = false;
+      }else if (flag == false) {
+        $(this).parent().find('ul').slideUp(200);
+        flag = true;
+      }
+    });
+    var flag2 = true;
+    $('.sec3 p').on('click',function () {
+      if(flag2 == true){
+        $(this).parent().find('ul').slideDown(200);
+        flag2 = false;
+      }else if (flag2 == false) {
+        $(this).parent().find('ul').slideUp(200);
+        flag2 = true;
+      }
+    });
+    // 监听窗口
+
+    var userName = '';
+    $(function () {
+      var allWidth = document.body.offsetWidth;
+      var mainWidth = allWidth - 200;
+      $('main').width(mainWidth);
+    });
+
+    // 客服信息
+    console.log(storage);
+    var sessionId = storage;
+    var customerId = "";
+    var customerAvatar = "../img/mohead.png";
+    var customerNickname = "客服小于";
+
+    // 发送对象信息
+    var userId = "";
+
+    var websocket = function() {
+        var target = 'ws://' + window.location.host + '/api/customer/1/' + sessionId;
+        console.log(target);
+        if ('WebSocket' in window) {
+            return new WebSocket(target);
+        } else if ('MozWebSocket' in window) {
+            return new MozWebSocket(target);
+        } else {
+            alert('WebSocket is not supported by this browser.');
+        }
+    }();
+
+    websocket.onmessage = function(data) {
+        var data = JSON.parse(data.data);
+        // 连接会话
+        if (data.type == "0") {
+            customerId = data.data.id;
+            websocket.send(to_message("3", {id: customerId}));
+        }
+        // 分配成员
+        if (data.type == "1") {
+            create_member(data.data, true, false);
+        }
+        // 移除成员
+        if (data.type == "2") {
+            stop_member(data.data, true);
+        }
+        // 聊天消息
+        if (data.type == "3") {
+            receive_message(data.data.id, data.data.content);
+        }
+        // 同步数据
+        if (data.type == "4") {
+            sync_member(data.data.id, data.data.records);
+        }
+        // 获取成员资料信息
+        if (data.type == "5") {
+            set_member(data.data.id, data.data.avatar, data.data.nickname);
+        }
+        // 获取未读消息成员
+        if (data.type == "6") {
+            var list = data.data;
+            if(list) {
+                for (var i = 0; i < list.length; i++) {
+                    create_member(list[i].id, list[i].online, true);
+                }
+            }
+        }
+    }
+
+    var to_message = function(type, data) {
+        var result = {};
+        result.type = type;
+        result.data = data;
+        return JSON.stringify(result);
+    }
+
+    var create_member = function(id, online, unread) {
+        var member = $("#" + id);
+        if (member.length > 0) {
+            (function(member, unread) {
+                var status = member.find(".status").html();
+                member.find(".online").html("[在线]");
+                member.find(".status").html(status ? status : (unread ? "[新消息]" : ""));
+            })(member, unread);
+            return;
+        }
+        (function(id, online, unread) {
+            var nickname = "-";
+            var online = online ? "[在线]" : "[离线]";
+            var status = unread ? "[新消息]" : "";
+            var avatar = "https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=2577111323,523703768&fm=85&s=68A23572CD9662D04C5465DE0000C0A1";
+            var html = "<div id='" + id + "' class='member'><div class='record'></div><span class='status'>" + status + "</span><span class='online'>" + online + "</span><img class='avatar record_img' src='" + avatar + "'><span class='nickname'>" + nickname + "</span></div>";
+            $("#member").append(html);
+            $(".member").unbind().on("click", function() {
+                select_member($(this));
+                $('#textCon').fadeIn(500);
+                var ttHeight = $('#text').height();
+                ttHeight = parseFloat(ttHeight);
+                $('.textCon').scrollTop(ttHeight);
+            });
+            websocket.send(to_message("1", {id: id}));
+            websocket.send(to_message("0", {id: id}));
+        })(id, online, unread);
+    };
+
+    var stop_member = function(id) {
+        (function(id) {
+            $("#" + id).find(".online").html("[离线]");
+        })(id);
+    };
+
+    var set_member = function(id, avatar, nickname) {
+        (function(id, avatar, nickname) {
+            var member = $("#" + id);
+            member.find(".avatar").attr("src", avatar);
+            member.find(".nickname").html(nickname);
+        })(id, avatar, nickname);
+    };
+
+    var sync_member = function(id, records) {
+        (function(id, records) {
+            if (records) {
+                for (var i = 0; i < records.length; i++) {
+                    insert_record(id, records[i].id, records[i].content);
+                }
+            }
+        })(id, records);
+    };
+
+    var insert_record = function(objectId, id, content) {
+
+        (function (objectId, id, content) {
+          var a;
+          if(id == customerId){
+            // 客服
+          a = "kefu"
+          }else {
+            // 用户
+          a = "user"
+          }
+            var member = $("#" + objectId);
+            var avatar = id == customerId ? customerAvatar : member.find(".avatar").attr("src");
+            var nickname = id == customerId ? customerNickname : member.find(".nickname").html();
+            var html = "<section><p class="+a+"><img class='record_img' src='" + avatar + "'><span>" + nickname + ":</span><span class='sendMsg'>" + content + "</span></p></section>";
+            member.find(".record").append(html);
+            if (userId == objectId) {
+                $("#text").append(html);
+                var ttHeight = $('#text').height();
+                ttHeight = parseFloat(ttHeight);
+                $('.textCon').scrollTop(ttHeight);
+            }
+        })(objectId, id, content);
+    };
+
+    var receive_message = function(id, content) {
+        if (userId != id) {
+            $("#" + id).find(".status").html("[新消息]");
+        }
+        open_remind();
+        insert_record(id, id, content);
+    };
+
+    var select_member = function(member) {
+        userId = member.attr("id");
+        member.find(".status").html("");
+        $("#text").html(member.find(".record").html());
+        $(".member").removeClass("member_select");
+        member.addClass("member_select");
+    };
+
+    var on_send = function() {
+        $("#send").on("click", function() {
+            var data = {};
+            data.content = $("#content").val();
+            data.id = userId;
+            websocket.send(to_message("2", data));
+            insert_record(userId, customerId, data.content);
+            $("#content").val('')
+        });
+    }();
+
+    var wait_remind = function() {
+        window.remind_status = false;
+        var hiddenProperty = 'hidden' in document ? 'hidden' : 'webkitHidden' in document ? 'webkitHidden' :  'mozHidden' in document ? 'mozHidden' : null;
+        var visibilityChangeEvent = hiddenProperty.replace(/hidden/i, 'visibilitychange');
+        var onVisibilityChange = function(){
+            if (document[hiddenProperty]) {
+                remind_status = true;
+            }else{
+                remind_status = false;
+                close_remind();
+            }
+        }
+        document.addEventListener(visibilityChangeEvent, onVisibilityChange);
+    }();
+
+    var open_remind = function() {
+        console.log(window.remind_status);
+        if (window.remind_status && !open_remind.time) {
+            var i = true;
+            open_remind.time = setInterval(function() {
+                if (i) {
+                    i = false;
+                    $("title").html("您收到新消息");
+                } else {
+                    i = true;
+                    $("title").html("...");
+                }
+            }, 1000);
+        }
+    };
+
+    var close_remind = function() {
+        clearInterval(open_remind.time);
+        open_remind.time = null;
+        $("title").html("在线客服");
+    }
+
+    $('.closenow').on('click',function () {
+      $('#textCon').fadeOut(500);
+      $('#text').empty();
+      $('.member').removeClass('member_select');
+      userId = "";
+    });
+
+    </script>
+
+  </main>
+
+</body>
+</html>
